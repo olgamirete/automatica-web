@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { useCallback, useState } from 'react';
 import './App.css';
+import BackgroundJS from './components/BackgroundJS';
 
 function App() {
+  const [val, setVal] = useState(30);
+  const updateVal = useCallback((e) => {
+    e.preventDefault();
+    setVal(e.target.value);
+  }, [setVal]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="range" min="1" max="100" value={val} onChange={updateVal} />
+      <input type="number" min="1" max="100" value={val} onChange={updateVal} />
+      <BackgroundJS cameraParams={{val: val}} />
     </div>
   );
 }
