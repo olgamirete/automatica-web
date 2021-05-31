@@ -4,24 +4,6 @@ import { useFrame } from '@react-three/fiber';
 
 // With help from: https://codesandbox.io/s/eager-noyce-6rvwr?from-embed=&file=/src/index.js:753-776
 
-// generate_points(0);
-
-// geometry = new THREE.BufferGeometry();
-
-// geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( new Float32Array(positions), 3 ) );
-// geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-
-// geometry.computeBoundingSphere();
-
-// var material = new THREE.PointsMaterial( { size: .5, vertexColors: true} );
-
-// points = new THREE.Points(geometry, material);
-// points.geometry.attributes.position.needsUpdate = true;
-
-// scene.add(points);
-// const auxPositions = [0, 1, 3, 1, 1, 3, 2, 1, 3, 3, 1, 3];
-// const positions = new THREE.Float32BufferAttribute(new Float32Array(auxPositions), 3);
-
 var getHeight = function (x, y, t) {
     // const offsetX = 2000;
     // const offsetY = -100;
@@ -54,36 +36,6 @@ var getHeight = function (x, y, t) {
 let auxPositions = [], colors = [];
 const step = 2;
 const n = 100;
-
-// for (let i = -n; i <= n; i++) {
-//     for (let j = -n; j <= n; j++) {
-//         let x = i * step;
-//         let z = j * step;
-//         let y = getHeight(x, z, 0);
-
-//         var newColor = new THREE.Color(0xd6b80e);
-//         newColor = new THREE.Color(0xaaaaaa);
-
-//         auxPositions.push(x, y, z);
-//         colors.push(newColor.r, newColor.g, newColor.b);
-//     }
-// }
-
-// for (let i = -n; i <= n; i++) {
-//     for (let j = -n; j <= n; j++) {
-//         // let x = i * step * (100+(Math.random()-.5)*2*1)/100;
-//         // let z = j * step * (100+(Math.random()-.5)*2*1)/100;
-//         let x = i * step;
-//         let z = j * step;
-//         let y = getHeight(x, z, 0);
-
-//         var newColor = new THREE.Color(0xd6b80e);
-//         newColor = new THREE.Color(0xaaaaaa);
-
-//         auxPositions.push(x, y, z);
-//         colors.push(newColor.r, newColor.g, newColor.b);
-//     }
-// }
 
 const angDivisions = 359;
 const maxRadius = 150;
