@@ -1,19 +1,21 @@
-import { useCallback, useState } from 'react';
+import { Container } from 'react-bootstrap';
+
 import './App.css';
 import BackgroundJS from './components/BackgroundJS';
+import NavBarAutomatica from './components/NavBarAutomatica';
+import useCameraParams from './hooks/useCameraParams';
 
 function App() {
-  const [val, setVal] = useState(30);
-  const updateVal = useCallback((e) => {
-    e.preventDefault();
-    setVal(e.target.value);
-  }, [setVal]);
+  
+  const [cameraParams, cameraFunctions] = useCameraParams();
 
   return (
     <div className="App">
-      <input type="range" min="1" max="100" value={val} onChange={updateVal} />
-      <input type="number" min="1" max="100" value={val} onChange={updateVal} />
-      <BackgroundJS cameraParams={{val: val}} />
+      <NavBarAutomatica cameraFunctions={cameraFunctions} />
+      <Container>
+        
+      </Container>
+      <BackgroundJS cameraParams={cameraParams} />
     </div>
   );
 }

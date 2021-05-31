@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame } from '@react-three/fiber';
 
 // With help from: https://codesandbox.io/s/eager-noyce-6rvwr?from-embed=&file=/src/index.js:753-776
@@ -34,8 +34,6 @@ var getHeight = function (x, y, t) {
 }
 
 let auxPositions = [], colors = [];
-const step = 2;
-const n = 100;
 
 const angDivisions = 359;
 const maxRadius = 150;
@@ -51,7 +49,7 @@ for (let i = 0; i <= angDivisions; i++) {
         var newColor = new THREE.Color(0xd6b80e);
         newColor = new THREE.Color(0xaaaaaa);
 
-        if(Math.random()*150 > j){
+        if(Math.random()*150 > j || j < 70){
             auxPositions.push(x, y, z);
             colors.push(newColor.r, newColor.g, newColor.b);
         }

@@ -1,9 +1,8 @@
 import './index.css';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import DotField from '../DotField';
+import DotField from './DotField';
 import { useEffect, useRef, useState } from 'react';
-// import Box from '../Box';
 
 function CustomScene(props) {
     const sceneRef = useRef(null);
@@ -29,20 +28,15 @@ function CustomScene(props) {
 
 function BackgroundJS(props) {
 
-    // const aspectRatio = window.innerWidth / window.innerHeight;
-    
-    const newCamPos = {x: 30, y: props.cameraParams.val, z: 15};
-
     return (
         <div id="background-js">
             <Canvas>
-                <CustomScene moveCamTo={newCamPos} >
+                <CustomScene moveCamTo={props.cameraParams.pos} >
 
                     {/* <ambientLight intensity={0.5} /> */}
                     {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
                     {/* <pointLight position={[-10, -10, -10]} /> */}
                     <DotField />
-                    {/* <Box /> */}
                     <OrbitControls
                         enablePan={false}
                         enableZoom={false}
