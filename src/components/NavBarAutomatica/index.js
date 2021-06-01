@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-// import './index.css';
 import AutomaticaLogo from './logo-v2.svg';
 
 function NavBarAutomatica(props) {
@@ -15,17 +14,6 @@ function NavBarAutomatica(props) {
     ]
 
     const [activeKey, setActiveKey] = useState(navLinks[0].eventKey);
-
-    const handleLinkClick = (e) => {
-        // alert(e.target.eventKey);
-
-        const moveTo = e.target.dataset["moveto"].split(",");
-        props.cameraFunctions.setPos({
-            x: moveTo[0],
-            y: moveTo[1],
-            z: moveTo[2]
-        });
-    }
 
     const handleSelect = (selectedKey, e) => {
         setActiveKey(selectedKey);
@@ -56,20 +44,15 @@ function NavBarAutomatica(props) {
                     className="mr-auto"
                     activeKey={activeKey}
                     onSelect={handleSelect}
-                    defaultActiveKey={navLinks[0].eventKey}
-                    variant="" >
+                    defaultActiveKey={navLinks[0].eventKey} >
                     {navLinks.map((nl, i) => {
-                        const isActive = nl.eventKey === activeKey;
+                        // const isActive = nl.eventKey === activeKey;
                         return (
                             <Nav.Link
                                 key={i}
                                 eventKey={nl.eventKey}
                                 href={nl.link}
-                                data-moveto={nl.moveCamTo}
-                                // onPointerDown={handleLinkClick}
-                                variant="warning"
-                            // className={isActive ? 'bg-warning' : ''}
-                            >
+                                data-moveto={nl.moveCamTo} >
                                 {nl.text}
                             </Nav.Link>
                         );
