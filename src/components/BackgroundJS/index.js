@@ -29,7 +29,7 @@ function CustomScene(props) {
 function BackgroundJS(props) {
 
     return (
-        <div id="background-js">
+        <div id="background-js" className="">
             <Canvas>
                 <CustomScene moveCamTo={props.cameraParams.pos} >
 

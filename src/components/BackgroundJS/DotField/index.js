@@ -35,21 +35,23 @@ var getHeight = function (x, y, t) {
 
 let auxPositions = [], colors = [];
 
-const angDivisions = 359;
+const maxAngle = 359;
 const maxRadius = 150;
+const stepRadius = 2;
+const stepAngle = 1;
 
-for (let i = 0; i <= angDivisions; i++) {
-    for (let j = 0; j <= maxRadius; j++) {
+for (let i = 0; i <= maxAngle/stepAngle; i++) {
+    for (let j = 0; j <= maxRadius/stepRadius; j++) {
         // let x = i * step * (100+(Math.random()-.5)*2*1)/100;
         // let z = j * step * (100+(Math.random()-.5)*2*1)/100;
-        let x = Math.cos(i*(2*Math.PI/180))*j;
-        let z = Math.sin(i*(2*Math.PI/180))*j;
+        let x = Math.cos(i*stepAngle*(2*Math.PI/180))*j*stepRadius;
+        let z = Math.sin(i*stepAngle*(2*Math.PI/180))*j*stepRadius;
         let y = getHeight(x, z, 0);
 
         var newColor = new THREE.Color(0xd6b80e);
         newColor = new THREE.Color(0xaaaaaa);
 
-        if(Math.random()*150 > j || j < 70){
+        if(Math.random()*150 > j*stepRadius || j*stepRadius < 70){
             auxPositions.push(x, y, z);
             colors.push(newColor.r, newColor.g, newColor.b);
         }

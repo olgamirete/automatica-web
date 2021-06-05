@@ -1,34 +1,45 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import AutomaticaLogo from './logo-v2.svg';
+import './index.css';
+import useHelpers from '../../hooks/useHelpers';
 
 function NavBarAutomatica(props) {
 
     const navRef = useRef(null);
+    const helpers = useHelpers();
 
-    const navLinks = [
-        { link: "#home", text: "Home", eventKey: "home", moveCamTo: [30, 30, 15] },
-        { link: "#showcase", text: "Showcase", eventKey: "showcase", moveCamTo: [20, -40, -70] },
-        { link: "#about", text: "About", eventKey: "about", moveCamTo: [3, 12, 18] },
-        { link: "#contact", text: "Contact", eventKey: "contact", moveCamTo: [90, 15, -5] }
-    ]
+    const path = props.location.pathname;
+    const navLinks = helpers.constants.navLinks;
+    const getKeyFromPath = helpers.functions.getSectionKeyFromPath;
 
-    const [activeKey, setActiveKey] = useState(navLinks[0].eventKey);
+    const [activeKey, setActiveKey] = useState(getKeyFromPath(path));
+    
+    useEffect(() => {
+        // Location changed
+        const newKey = getKeyFromPath(props.location.pathname);
+        setActiveKey(newKey);
+        setFlagExpanded(false);
+    }, [props.location.pathname, getKeyFromPath]);
 
-    const handleSelect = (selectedKey, e) => {
-        setActiveKey(selectedKey);
-
-        const moveTo = e.target.dataset["moveto"].split(",");
-        props.cameraFunctions.setPos({
-            x: moveTo[0],
-            y: moveTo[1],
-            z: moveTo[2]
-        });
-    }
+    const [flagExpanded, setFlagExpanded] = useState(false);
 
     return (
-        <Navbar bg="light" expand="md">
-            <Navbar.Brand href="#home">
+        <Navbar
+            bg="light"
+            expand="md"
+            sticky="top"
+            onToggle={() => setFlagExpanded((f) => !f)}
+            expanded={flagExpanded}
+        >
+            <Navbar.Brand
+                as={Link}
+                href={navLinks[0].link}
+                to={navLinks[0].link}
+                // data-moveto={navLinks[0].moveCamTo}
+                // onPointerDown={() => handleSelect(navLinks[0].eventKey, false, navLinks[0].moveCamTo)}
+            >
                 <img
                     src={AutomaticaLogo}
                     width="30"
@@ -43,16 +54,21 @@ function NavBarAutomatica(props) {
                     ref={navRef}
                     className="mr-auto"
                     activeKey={activeKey}
-                    onSelect={handleSelect}
-                    defaultActiveKey={navLinks[0].eventKey} >
+                    // onSelect={handleSelect}
+                    defaultActiveKey={navLinks[0].eventKey}
+                    >
                     {navLinks.map((nl, i) => {
-                        // const isActive = nl.eventKey === activeKey;
+                        const isActive = nl.eventKey === activeKey;
                         return (
                             <Nav.Link
                                 key={i}
                                 eventKey={nl.eventKey}
                                 href={nl.link}
-                                data-moveto={nl.moveCamTo} >
+                                to={nl.link}
+                                className={isActive ? 'active-link-custom border-warning' : ''}
+                                // data-moveto={nl.moveCamTo}
+                                as={Link}
+                            >
                                 {nl.text}
                             </Nav.Link>
                         );

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { Jumbotron, Button, Container, Row, Col } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
-function InfoCard() {
+function InfoCard(props) {
 
     const cardRef = useRef(null);
 
@@ -20,23 +20,18 @@ function InfoCard() {
         }
     }, []);
 
+    const bgColor = props.variant ? 'bg-' + props.variant : '';
+
+    // let location = useLocation();
+
     return (
-        <Container fluid>
+        <Container fluid className="mt-5" >
             <Row className='justify-content-center'>
-                <Col xs={12} md={10} lg={8}>
+                <Col xs={12} md={10} lg={6}>
                     <Jumbotron
                         ref={cardRef}
-                        className="bg-dark bg-opacity-6">
-                        <h1 className="text-light mb-4">Automatica</h1>
-                        <p className="text-light lead">
-                            Hay una manera <span className="text-warning font-weight-bold">más simple</span> de hacer las cosas que te molestan, y en <span className="text-info font-weight-bold">Automatica</span> te vamos a ayudar a encontrarla.
-                        </p>
-                        <Button
-                            variant="info"
-                            className="mt-3"
-                            >
-                                ¡Mirá lo que dicen nuestros clientes!
-                        </Button>
+                        className={bgColor + ' bg-opacity-' + props.bgOpacity + ' ' + props.className}>
+                        {props.children}
                     </Jumbotron>
                 </Col>
             </Row>
