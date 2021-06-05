@@ -37,8 +37,6 @@ function NavBarAutomatica(props) {
                 as={Link}
                 href={navLinks[0].link}
                 to={navLinks[0].link}
-                // data-moveto={navLinks[0].moveCamTo}
-                // onPointerDown={() => handleSelect(navLinks[0].eventKey, false, navLinks[0].moveCamTo)}
             >
                 <img
                     src={AutomaticaLogo}
@@ -54,7 +52,6 @@ function NavBarAutomatica(props) {
                     ref={navRef}
                     className="mr-auto"
                     activeKey={activeKey}
-                    // onSelect={handleSelect}
                     defaultActiveKey={navLinks[0].eventKey}
                     >
                     {navLinks.map((nl, i) => {
@@ -65,17 +62,14 @@ function NavBarAutomatica(props) {
                                 eventKey={nl.eventKey}
                                 href={nl.link}
                                 to={nl.link}
-                                className={isActive ? 'active-link-custom border-warning' : ''}
-                                // data-moveto={nl.moveCamTo}
+                                className={isActive ? 'border-warning active-link-custom' : ''}
+                                // className={isActive ? ('border-warning ' + (flagExpanded ? 'active-link-custom-left' : 'active-link-custom-bottom' )) : ''}
                                 as={Link}
                             >
                                 {nl.text}
                             </Nav.Link>
                         );
                     })}
-                    {/* <Nav.Link href="#showcase" data-moveto={[0, 10, 2]} onPointerDown={handleLinkClick} >Showcase</Nav.Link>
-                    <Nav.Link href="#about" data-moveto={[20, 40, 7]} onPointerDown={handleLinkClick} >About</Nav.Link>
-                    <Nav.Link href="#contact" data-moveto={[60, 10, 30]} onPointerDown={handleLinkClick} >Contact</Nav.Link> */}
                 </Nav>
                 {/* <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />

@@ -1,3 +1,26 @@
-.active-link-custom {
-    border-bottom: 3px solid;
+/* xs // Extra small devices (portrait phones, less than 576px) */
+/* // No media query for `xs` since this is the default in Bootstrap */
+
+/* sm // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* The following is "up to md" devices, so it includes xs and sm */
+@media (max-width: 767px) {
+    .active-link-custom {
+        padding-left: 3px !important;
+        border-left: 3px solid;
+    }
 }
+
+/* md // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .active-link-custom {
+        border-bottom: 3px solid;
+    }
+}
+
+/* lg // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* xl // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}

@@ -23,7 +23,7 @@ function About(props) {
                         to="/showcase"
                         as={Link}
                         >
-                        ¿Cómo sé si me pueden ayudar?
+                        ¿Cómo saber si me pueden ayudar?
                     </Button>
                 </Col>
             </Row>

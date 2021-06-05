@@ -27,7 +27,7 @@ function Showcase(props) {
                 Las tareas manuales llevan <span className="font-weight-bold text-pink">tiempo</span>, dan lugar a <span className="font-weight-bold text-pink">errores</span>, <span className="font-weight-bold text-pink">molestan</span> y <span className="font-weight-bold text-pink">desmotivan</span>.
             </p>
             <p className="lead text-center">
-                Por eso, si alguna de estas situaciones te describe, en <span className="text-info font-weight-bold">Automatica</span> podemos hacer mucho por vos.
+                Por eso, si alguna de estas situaciones los describe, en <span className="text-info font-weight-bold">Automatica</span> podremos hacer mucho por vosotros.
             </p>
             <Row>
                 <Col className="text-center">
