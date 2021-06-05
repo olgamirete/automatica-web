@@ -37,42 +37,42 @@ function Contact(props) {
     }, [messageStatus]);
 
 
-    // const handleSubmitBackup = (e) => {
-
-    //     // Prevent form submit
-    //     e.preventDefault();
-
-    //     // Get form data
-    //     const form = e.currentTarget;
-    //     const formData = new FormData(form);
-    //     const formDataObj = Object.fromEntries(formData.entries());
-
-    //     // Send data using the fetch api
-    //     fetch("https://automaticaconsultora.com.ar/test_form.php", {
-    //         method: 'post',
-    //         body: JSON.stringify(formDataObj)
-    //     })
-    //         .then(function (response) {
-    //             return response.text();
-    //         })
-    //         .then(function (text) {
-    //             // console.log(text);
-    //             setMessageStatus(status.SENT);
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //             setMessageStatus(status.ERROR);
-    //         });
-
-    //     // Prevent html form submit
-    //     return false;
-
-    // }
-
     const handleSubmit = (e) => {
+
+        // Prevent form submit
         e.preventDefault();
-        setMessageStatus(status.SENT);
+
+        // Get form data
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const formDataObj = Object.fromEntries(formData.entries());
+
+        // Send data using the fetch api
+        fetch("https://automaticaconsultora.com.ar/test_form.php", {
+            method: 'post',
+            body: JSON.stringify(formDataObj)
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (text) {
+                // console.log(text);
+                setMessageStatus(status.SENT);
+            })
+            .catch(function (error) {
+                console.log(error);
+                setMessageStatus(status.ERROR);
+            });
+
+        // Prevent html form submit
+        return false;
+
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     setMessageStatus(status.SENT);
+    // }
 
     const inputFieldConfig = {
         className: "bg-light text-muted",
