@@ -48,7 +48,7 @@ function Contact(props) {
         const formDataObj = Object.fromEntries(formData.entries());
 
         // Send data using the fetch api
-        fetch("https://automaticaconsultora.com.ar/test_form.php", {
+        fetch("https://automaticaconsultora.com.ar/send_contact_email.php", {
             method: 'post',
             body: JSON.stringify(formDataObj)
         })
