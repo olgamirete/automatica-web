@@ -4,6 +4,17 @@ import { useFrame } from '@react-three/fiber';
 
 // With help from: https://codesandbox.io/s/eager-noyce-6rvwr?from-embed=&file=/src/index.js:753-776
 
+// var getHeight_orig = function (x, y, t) {
+//     const scale = 10;
+//     x = x * scale;
+//     y = y * scale;
+
+//     const r = Math.sqrt(x * x + y * y) / 3;
+//     const angle = Math.atan2(y, x);
+//     t = t / 2
+//     return Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale; //Fav
+// }
+
 var getHeight = function (x, y, t) {
     // const offsetX = 2000;
     // const offsetY = -100;
@@ -19,18 +30,24 @@ var getHeight = function (x, y, t) {
     x = x * scale;
     y = y * scale;
 
-    const r = Math.sqrt(x * x + y * y) / 3;
+    let r = Math.sqrt(x * x + y * y) / 3;
+    r = Math.pow(r, .92);
     // const r = (x+y)/2;
     const angle = Math.atan2(y, x);
-    t = t / 2
+    t = t / 30;
+
+    // const fa = r < 50 ? 0 : 1;
+    // const fa = r < 50 ? Math.sin(r*(Math.PI/2)/50) : 1;
+    const fa = 1;
     // return Math.sin((r+t)/(10*Math.PI))*5000*(1/r);
-    // return (Math.sin((r+t)/(5*2*Math.PI))+0)*5000*(1/r));
+    // return (Math.sin((r+t)/(5*2*Math.PI))+0)*50*(1/r);
+    return fa * (Math.sin((angle+t/12)*5+r*2*Math.PI/100)*2*Math.sin(r*2*Math.PI/100+t/2));
     // return Math.sin((r+t)/(5*2*Math.PI))*500*Math.sqrt(1/(r+1));
     // return Math.sin((x+t)/(5*2*Math.PI))*50 + Math.sin((y-t)/(5*2*Math.PI))*50;
 
     // return Math.sin((r+t)/(5*2*Math.PI))*50*Math.sin(angle*5+(t+r/1.5)/100); //Fav
 
-    return Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale; //Fav
+    // return fa * ( Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale); //Fav
 }
 
 let auxPositions = [], colors = [];
@@ -39,6 +56,7 @@ const maxAngle = 359;
 const maxRadius = 150;
 const stepRadius = 2;
 const stepAngle = 1;
+// const stepAngle = 2;
 
 for (let i = 0; i <= maxAngle/stepAngle; i++) {
     for (let j = 0; j <= maxRadius/stepRadius; j++) {

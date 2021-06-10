@@ -11,8 +11,8 @@ function useHelpers() {
 
     const navLinks = useMemo(() => [
         { link: "/", text: "Inicio", eventKey: "home", moveCamTo: [30, 30, 15] },
-        { link: "/about", text: "¿Qué hacemos?", eventKey: "about", moveCamTo: [3, 12, 18] },
-        { link: "/showcase", text: "Algunos ejemplos", eventKey: "showcase", moveCamTo: [20, -40, -70] },
+        { link: "/about", text: "Acerca", eventKey: "about", moveCamTo: [3, 12, 18] },
+        { link: "/showcase", text: "Servicios", eventKey: "showcase", moveCamTo: [20, -40, -70] },
         { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [90, 15, -5] }
     ], []);
 

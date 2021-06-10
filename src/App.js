@@ -14,7 +14,6 @@ import {
 import {
   SwitchTransition,
   CSSTransition
-  // TransitionGroup
 } from "react-transition-group";
 import './App.css';
 import useHelpers from './hooks/useHelpers';

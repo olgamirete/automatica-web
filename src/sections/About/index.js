@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 function About(props) {
     return (
         <InfoCard variant="dark" bgOpacity={8} className="text-light border border-light" >
-            <h1 className="mb-4 text-center">¿Qué hacemos?</h1>
+            <h1 className="mb-4 text-center">Acerca</h1>
             <p className="lead text-center">
                 Nuestro <span className="text-warning font-weight-bold">objetivo</span> es ayudar a las empresas a <span className="text-info font-weight-bold">automatizar su trabajo</span>,
                 para que no tengan que perder el tiempo haciendo tareas repetitivas o
                 engorrosas.
             </p>
-            <p className="lead text-center lead tex">
+            {/* <p className="lead text-center lead tex">
                 Luego de trabajar con nosotros, muchas de <span className="font-weight-bold text-pink">sus tareas se harán solas y en menor tiempo</span>, mientras ustedes se preparan el café.
-            </p>
+            </p> */}
             <Row>
                 <Col className="text-center">
                     <Button

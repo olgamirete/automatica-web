@@ -22,15 +22,13 @@ function InfoCard(props) {
 
     const bgColor = props.variant ? 'bg-' + props.variant : '';
 
-    // let location = useLocation();
-
     return (
         <Container fluid className="mt-5" >
             <Row className='justify-content-center'>
                 <Col xs={12} md={10} lg={6}>
                     <Jumbotron
                         ref={cardRef}
-                        className={bgColor + ' bg-opacity-' + props.bgOpacity + ' ' + props.className}>
+                        className={bgColor + ' bg-opacity-' + props.bgOpacity + ' ' + props.className + ' info-card'}>
                         {props.children}
                     </Jumbotron>
                 </Col>
