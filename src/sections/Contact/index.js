@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Alert } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import InfoCard from '../../components/InfoCard';
 import ContactForm from './ContactForm';
 import {

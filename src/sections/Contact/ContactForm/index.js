@@ -9,46 +9,48 @@ function ContactForm(props) {
 
     const status = props.statusDefs;
     
-    // const handleSubmit_backUp = (e) => {
-
-    //     // Prevent form submit
-    //     e.preventDefault();
-
-    //     // Get form data
-    //     const form = e.currentTarget;
-    //     const formData = new FormData(form);
-    //     const formDataObj = Object.fromEntries(formData.entries());
-
-    //     // Send data using the fetch api
-    //     fetch("https://automaticaconsultora.com.ar/send_contact_email.php", {
-    //         method: 'post',
-    //         body: JSON.stringify(formDataObj)
-    //     })
-    //         .then(function (response) {
-    //             return response.text();
-    //         })
-    //         .then(function (text) {
-    //             // console.log(text);
-    //             props.setMessageStatus(status.SENT);
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //             props.setMessageStatus(status.ERROR);
-    //         });
-
-    //     // Prevent html form submit
-    //     return false;
-
-    // }
-
     const handleSubmit = (e) => {
+
+        // Prevent form submit
         e.preventDefault();
+
         props.setMessageStatus(status.SENDING);
-        const delayInMilliseconds = 1000;
-        setTimeout(function() {
-            props.setMessageStatus(status.SENT);
-          }, delayInMilliseconds);
+
+        // Get form data
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const formDataObj = Object.fromEntries(formData.entries());
+
+        // Send data using the fetch api
+        fetch("https://automaticaconsultora.com.ar/send_contact_email.php", {
+            method: 'post',
+            body: JSON.stringify(formDataObj)
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (text) {
+                // console.log(text);
+                props.setMessageStatus(status.SENT);
+            })
+            .catch(function (error) {
+                console.log(error);
+                props.setMessageStatus(status.ERROR);
+            });
+
+        // Prevent html form submit
+        return false;
+
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     props.setMessageStatus(status.SENDING);
+    //     const delayInMilliseconds = 1000;
+    //     setTimeout(function() {
+    //         props.setMessageStatus(status.SENT);
+    //       }, delayInMilliseconds);
+    // }
 
     const inputFieldConfig = {
         className: "bg-light text-muted",
@@ -99,7 +101,6 @@ function ContactForm(props) {
                 flagSending={props.messageStatus === status.SENDING}
                 borderColor="light"
             />
-            {/* <AlertMessage messageStatus={props.messageStatus} /> */}
         </Form>
     );
 }

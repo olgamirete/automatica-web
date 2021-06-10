@@ -66,8 +66,9 @@ for (let i = 0; i <= maxAngle/stepAngle; i++) {
         let z = Math.sin(i*stepAngle*(2*Math.PI/180))*j*stepRadius;
         let y = getHeight(x, z, 0);
 
-        var newColor = new THREE.Color(0xd6b80e);
-        newColor = new THREE.Color(0xaaaaaa);
+        // var newColor = new THREE.Color(0x00b8ff);
+        const newColor = new THREE.Color(0xaaaaaa);
+        // const newColor = new THREE.Color(0xff0000);
 
         if(Math.random()*150 > j*stepRadius || j*stepRadius < 70){
             auxPositions.push(x, y, z);
@@ -123,8 +124,12 @@ function DotField(props) {
             
             let points = pointsRef.current;
             points.geometry.attributes.position.needsUpdate = true;
+            points.geometry.attributes.color.needsUpdate = true;
             let dots = points.geometry.attributes.position.array;
             const dotCount = dots.length / 3;
+            let colors = points.geometry.attributes.color.array;
+            // console.log(colors.length);
+            // console.log(colors[0]);
             
             for (let i = 0; i < dotCount; i++) {
 
@@ -133,8 +138,26 @@ function DotField(props) {
                 const z = dots[i * 3 + 2];
 
                 // And now we update the missing coordinate
-                dots[i * 3 + 1] = getHeight(x, z, -elapsedTime * 100);
+                const dotHeight = getHeight(x, z, -elapsedTime * 100);
+                dots[i * 3 + 1] = dotHeight;
                 // dots[i * 3 + 1] = elapsedTime*100;
+                // colors[i] = new THREE.Color(0, 100, 50);
+                // if(dotHeight > 1) {
+                    // rgb(82%, 31%, 53%) -> pink
+                    // rgb(100%, 76%, 3%) -> yellow
+                    // rgb(9%, 64%, 72%)  -> info
+                    // rgb(97.3%, 97.6%, 98%)
+                    // colors[i * 3 + 0] = .82; // expects a value between 0 and 1.
+                    // colors[i * 3 + 1] = .31; // expects a value between 0 and 1.
+                    // colors[i * 3 + 2] = .53; // expects a value between 0 and 1.
+                // } else {
+                    colors[i * 3 + 0] = .973 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
+                    colors[i * 3 + 1] = .976 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
+                    colors[i * 3 + 2] = .98 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
+                    // colors[i * 3 + 0] = 1; // expects a value between 0 and 1.
+                    // colors[i * 3 + 1] = 1; // expects a value between 0 and 1.
+                    // colors[i * 3 + 2] = 1; // expects a value between 0 and 1.
+                // }
                 
             }
         }
