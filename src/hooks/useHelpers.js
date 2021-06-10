@@ -2,19 +2,24 @@ import { useCallback, useMemo } from 'react';
 
 function useHelpers() {
 
+    const navLinks = useMemo(() => [
+        { link: "/", text: "Inicio", eventKey: "home", moveCamTo: [30, 30, 15], showInNavbar: true },
+        { link: "/about", text: "Acerca", eventKey: "about", moveCamTo: [3, 12, 18], showInNavbar: true },
+        { link: "/showcase", text: "Servicios", eventKey: "showcase", moveCamTo: [20, -40, -70], showInNavbar: true },
+        { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [90, 15, -5], showInNavbar: true },
+        { link: "/notfound", text: "Not Found", eventKey: "notfound", moveCamTo: [30, 10, 5], showInNavbar: false }
+    ], []);
+
     const getSectionKeyFromPath = useCallback((path) => {
         let aux = path + '/';
         aux = aux.substring(1);
         aux = aux.substring(0, aux.search('/'));
-        return aux || 'home';
-    }, []);
-
-    const navLinks = useMemo(() => [
-        { link: "/", text: "Inicio", eventKey: "home", moveCamTo: [30, 30, 15] },
-        { link: "/about", text: "Acerca", eventKey: "about", moveCamTo: [3, 12, 18] },
-        { link: "/showcase", text: "Servicios", eventKey: "showcase", moveCamTo: [20, -40, -70] },
-        { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [90, 15, -5] }
-    ], []);
+        aux = aux === '' ? 'home' : aux;
+        if(navLinks.some((x) => x.eventKey === aux)){
+            return aux;
+        }
+        return 'notfound';
+    }, [navLinks]);
 
     const mainAppId = "main-app";
 

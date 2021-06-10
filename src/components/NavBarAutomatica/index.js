@@ -54,16 +54,14 @@ function NavBarAutomatica(props) {
                     activeKey={activeKey}
                     defaultActiveKey={navLinks[0].eventKey}
                     >
-                    {navLinks.map((nl, i) => {
+                    {navLinks.filter((x) => x.showInNavbar).map((nl, i) => {
                         const isActive = nl.eventKey === activeKey;
                         return (
                             <Nav.Link
                                 key={i}
                                 eventKey={nl.eventKey}
-                                href={nl.link}
                                 to={nl.link}
                                 className={isActive ? 'border-warning active-link-custom' : ''}
-                                // className={isActive ? ('border-warning ' + (flagExpanded ? 'active-link-custom-left' : 'active-link-custom-bottom' )) : ''}
                                 as={Link}
                             >
                                 {nl.text}
