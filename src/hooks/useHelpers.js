@@ -6,7 +6,8 @@ function useHelpers() {
         { link: "/", text: "Inicio", eventKey: "home", moveCamTo: [30, 30, 15], showInNavbar: true },
         { link: "/about", text: "Acerca", eventKey: "about", moveCamTo: [3, 12, 18], showInNavbar: true },
         { link: "/showcase", text: "Servicios", eventKey: "showcase", moveCamTo: [20, -40, -70], showInNavbar: true },
-        { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [90, 15, -5], showInNavbar: true },
+        { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [60, 20, -20], showInNavbar: true },
+        { link: "/team", text: "Equipo", eventKey: "team", moveCamTo: [90, 15, -5], showInNavbar: true },
         { link: "/notfound", text: "Not Found", eventKey: "notfound", moveCamTo: [30, 10, -15], showInNavbar: false }
     ], []);
 

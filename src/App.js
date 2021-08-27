@@ -6,6 +6,7 @@ import Home from './sections/Home';
 import Showcase from './sections/Showcase';
 import About from './sections/About';
 import Contact from './sections/Contact';
+import Team from './sections/Team';
 import {
   Switch,
   Route,
@@ -66,6 +67,9 @@ function App(props) {
                   </Route>
                   <Route path="/contact" >
                     <Contact />
+                  </Route>
+                  <Route path="/team" >
+                    <Team />
                   </Route>
                   <Route >
                     <NotFound />

@@ -1,0 +1,12 @@
+.icon-social-team svg {
+    fill: #F8F9FA;
+}
+
+.icon-social-team:not(:last-child) {
+    padding-right: .7em;
+}
+
+.max-height-profile-pic {
+    max-height: 100px !important;
+    max-width: 100px !important;
+}
