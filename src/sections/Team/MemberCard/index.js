@@ -27,12 +27,6 @@ function MemberCard(props) {
                         </Card.Body>
                     </Col>
                 </Row>
-                {/* <Row>
-                    <Col>
-                        <Card.Body>
-                        </Card.Body>
-                    </Col>
-                </Row> */}
             </Card>
         </Col>
     );
