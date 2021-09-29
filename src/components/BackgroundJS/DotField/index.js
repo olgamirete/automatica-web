@@ -70,7 +70,7 @@ for (let i = 0; i <= maxAngle/stepAngle; i++) {
         const newColor = new THREE.Color(0xaaaaaa);
         // const newColor = new THREE.Color(0xff0000);
 
-        if(Math.random()*150 > j*stepRadius || j*stepRadius < 70){
+        if(Math.random()*150 > j*stepRadius || j*stepRadius < 20){
             auxPositions.push(x, y, z);
             colors.push(newColor.r, newColor.g, newColor.b);
         }
