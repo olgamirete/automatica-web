@@ -4,8 +4,6 @@ import MemberCard from './MemberCard';
 import picFederico from './pictures/federico.png';
 import picJulieta from './pictures/julieta.png';
 import picFrancisco from './pictures/francisco.png';
-import picMarco from './pictures/marco.png';
-import picLucas from './pictures/lucas.png';
 
 function Team(props) {
 
