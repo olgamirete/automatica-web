@@ -15,17 +15,19 @@ import useHelpers from "hooks/useHelpers";
 import NotFound from "sections/NotFound";
 import LangContext from "contexts/LangContext";
 import en from "lang/en";
+import useLanguage from "hooks/useLanguage";
 
 // For internationalization, try and get the prefered language from the system.
 // Also show option to change the language. If the language is changed, store
 // the new setting with the localStorage api.
 
 function App(props) {
-  const [language, setLanguage] = useState(en);
+  
+  const [language, setLanguage] = useLanguage();
 
   let location = useLocation();
   const helpers = useHelpers();
-
+  
   const [cameraParams, cameraFunctions] = useCameraParams(location);
 
   return (

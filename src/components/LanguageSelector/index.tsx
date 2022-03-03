@@ -3,7 +3,7 @@ import LangContext, { availableLanguages } from 'contexts/LangContext'
 import { ButtonGroup, ToggleButton } from 'react-bootstrap'
 
 export interface LanguageSelectorProps {
-  setLanguage: Dispatch<SetStateAction<typeof availableLanguages[0]>>
+  setLanguage: (langCode: string) => void
 }
 
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ setLanguage }) => {
@@ -20,7 +20,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ setLanguage }) => {
           className={`ms-1 btn-sm border-0 rounded shadow-none ${avLang._code === lang._code ? 'bg-secondary' : 'bg-transparent text-dark'}`}
           value={avLang._code as string}
           checked={avLang._code === lang._code}
-          onChange={() => setLanguage(avLang)}
+          onChange={() => setLanguage(avLang._code as string)}
         >
           <div className="d-flex flex-row flex-nowrap justify-content-center align-items-center">
             <div className="fs-5">{avLang._flag}</div>
