@@ -1,7 +1,8 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Form } from 'react-bootstrap';
-import CustomFormInput from '../../../components/CustomForm/CustomFormInput';
-import CustomSubmitButton from '../../../components/CustomForm/CustomSubmitButton';
+import CustomFormInput from 'components/CustomForm/CustomFormInput';
+import CustomSubmitButton from 'components/CustomForm/CustomSubmitButton';
+import LangContext from 'contexts/LangContext';
 
 function ContactForm(props) {
 
@@ -43,19 +44,8 @@ function ContactForm(props) {
 
     }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     props.setMessageStatus(status.SENDING);
-    //     const delayInMilliseconds = 1000;
-    //     setTimeout(function() {
-    //         props.setMessageStatus(status.SENT);
-    //       }, delayInMilliseconds);
-    // }
-
-    const inputFieldConfig = {
-        className: "bg-light text-muted",
-        bgOpacity: "7"
-    }
+    const inputFieldClasses = "bg-light text-muted"
+    const lang = useContext(LangContext);
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit} >
@@ -63,38 +53,34 @@ function ContactForm(props) {
                 required
                 type="name"
                 name="name"
-                placeholder="Ingresa tu nombre"
-                label="Nombre"
-                className={inputFieldConfig.className}
-                bgOpacity={inputFieldConfig.bgOpacity}
+                placeholder={lang.enter_your_name}
+                label={lang.name}
+                className={inputFieldClasses}
             />
             <CustomFormInput
                 required
                 type="company"
                 name="company"
-                placeholder="Ingresa tu compañía"
-                label="Compañía"
-                className={inputFieldConfig.className}
-                bgOpacity={inputFieldConfig.bgOpacity}
+                placeholder={lang.enter_your_company}
+                label={lang.company}
+                className={inputFieldClasses}
             />
             <CustomFormInput
                 required
                 type="email"
                 name="email"
-                placeholder="Ingresa tu correo electrónico"
-                label="Correo electrónico"
-                className={inputFieldConfig.className}
-                bgOpacity={inputFieldConfig.bgOpacity}
+                placeholder={lang.enter_your_email_address}
+                label={lang.email}
+                className={inputFieldClasses}
             />
             <CustomFormInput
                 required
                 type="text"
                 name="message"
-                placeholder="Cuéntanos por qué nos escribes."
-                label="Mensaje"
+                placeholder={lang.tell_us_why_you_write}
+                label={lang.message}
                 as="textarea"
-                className={inputFieldConfig.className}
-                bgOpacity={inputFieldConfig.bgOpacity}
+                className={inputFieldClasses}
             />
             <CustomSubmitButton
                 variant="dark"

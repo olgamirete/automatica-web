@@ -1,16 +1,17 @@
+import LangContext from 'contexts/LangContext';
+import { useContext } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InfoCard from '../../components/InfoCard';
 
 function Home(props) {
+    const lang = useContext(LangContext);
     return (
-        <InfoCard variant="dark" bgOpacity={6} className="border border-light" >
+        <InfoCard className="bg-dark text-light border border-light" >
             <h1 className="text-light mb-4 text-center">Automatica</h1>
             <Row className="m-0 p-0 justify-content-center" >
                 <Col className="m-0 p-0" xs={12} md={10} lg={8}>
-                    <p className="text-light lead text-center">
-                        Hay una manera <span className="text-warning font-weight-bold">más simple</span> de hacer las cosas que te llevan tiempo, y en <span className="text-info font-weight-bold">Automatica</span> te vamos a ayudar a encontrarla.
-                    </p>
+                    {lang.home_text}
                 </Col>
             </Row>
             <Row>
@@ -22,7 +23,7 @@ function Home(props) {
                         to="/about"
                         as={Link}
                         >
-                        ¡Mira cómo!
+                        {lang.see_how}
                     </Button>
                 </Col>
             </Row>

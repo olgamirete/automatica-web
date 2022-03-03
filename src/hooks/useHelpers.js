@@ -1,15 +1,18 @@
-import { useCallback, useMemo } from 'react';
+import LangContext from 'contexts/LangContext';
+import { useCallback, useContext, useMemo } from 'react';
 
 function useHelpers() {
 
+    const lang = useContext(LangContext);
+
     const navLinks = useMemo(() => [
-        { link: "/", text: "Inicio", eventKey: "home", moveCamTo: [30, 30, 15], showInNavbar: true },
-        { link: "/about", text: "Acerca", eventKey: "about", moveCamTo: [3, 12, 18], showInNavbar: true },
-        { link: "/showcase", text: "Servicios", eventKey: "showcase", moveCamTo: [20, -40, -70], showInNavbar: true },
-        { link: "/contact", text: "Contacto", eventKey: "contact", moveCamTo: [60, 20, -20], showInNavbar: true },
-        { link: "/team", text: "Equipo", eventKey: "team", moveCamTo: [90, 15, -5], showInNavbar: true },
-        { link: "/notfound", text: "Not Found", eventKey: "notfound", moveCamTo: [30, 10, -15], showInNavbar: false }
-    ], []);
+        { link: "/", text: lang.home, eventKey: "home", moveCamTo: [30, 30, 15], showInNavbar: true },
+        { link: "/about", text: lang.about, eventKey: "about", moveCamTo: [3, 12, 18], showInNavbar: true },
+        { link: "/showcase", text: lang.showcase, eventKey: "showcase", moveCamTo: [20, -40, -70], showInNavbar: true },
+        { link: "/contact", text: lang.contact, eventKey: "contact", moveCamTo: [60, 20, -20], showInNavbar: true },
+        { link: "/team", text: lang.team, eventKey: "team", moveCamTo: [90, 15, -5], showInNavbar: true },
+        { link: "/notfound", text: lang.not_found, eventKey: "notfound", moveCamTo: [30, 10, -15], showInNavbar: false }
+    ], [lang]);
 
     const getSectionKeyFromPath = useCallback((path) => {
         let aux = path + '/';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import InfoCard from '../../components/InfoCard';
 import ContactForm from './ContactForm';
@@ -8,6 +8,7 @@ import {
 } from "react-transition-group";
 import SocialFooter from './SocialFooter';
 import './index.css';
+import LangContext from 'contexts/LangContext';
 
 const status = {
     NULL: "null",
@@ -19,19 +20,20 @@ const status = {
 function Contact(props) {
 
     const [messageStatus, setMessageStatus] = useState(status.NULL);
+    const lang = useContext(LangContext);
 
     function AlertMessage(props) {
         switch (props.messageStatus) {
             case status.SENT:
                 return (
                     <div role="alert" class="mt-3 alert alert-light">
-                        ¡Tu mensaje ha sido enviado! Te enviaremos una respuesta por correo para confirmarte que lo hemos recibido correctamente.
+                        {lang.message_sent_success}
                     </div>
                 );
             case status.ERROR:
                 return (
                     <div role="alert" class="mt-3 alert alert-danger">
-                        Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo más tarde, o utiliza alguno de nuestros canales alternativos.
+                        {lang.message_sent_error}
                     </div>
                 );
             default:
@@ -40,11 +42,11 @@ function Contact(props) {
     }
 
     return (
-        <InfoCard variant="dark" bgOpacity={6} className="border border-muted" >
-            <h1 className="text-light mb-4 text-center">Contáctanos</h1>
+        <InfoCard className="bg-dark text-light border border-light" >
+            <h1 className="text-light mb-4 text-center">{lang.contact_us}</h1>
             <Container fluid>
                 <p className="text-light lead text-center">
-                    ¡Nos encanta recibir consultas! Estamos para lo que necesites.
+                    {lang.we_love_to_hear_from_you}
                 </p>
                 {messageStatus !== status.SENT && (
                     <ContactForm
@@ -63,7 +65,7 @@ function Contact(props) {
                 </SwitchTransition>
             </Container >
             <p className="text-light text-center mt-3 small">
-                Si lo prefieres, también puedes comunicarte con nosotros a través de nuestros demás canales:
+                {lang.if_you_prefer_use_other_contact_channels}
             </p>
             <SocialFooter />
         </InfoCard >

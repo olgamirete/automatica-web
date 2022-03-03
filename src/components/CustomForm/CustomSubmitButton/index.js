@@ -1,15 +1,18 @@
 import IconSend from './sendButton.svg';
 import { Button, Spinner } from 'react-bootstrap';
+import { useContext } from 'react';
+import LangContext from 'contexts/LangContext';
 
 function CustomSubmitButton(props) {
 
     const borderClass = props.borderColor ? "border border-" + props.borderColor : "";
+    const lang = useContext(LangContext);
 
     function IconForButton(props) {
         if (props.flagSending) {
             return (
                 <Spinner animation="border" variant="light" size="sm">
-                    <span className="sr-only">Enviando...</span>
+                    <span className="visually-hidden">{lang.sending}</span>
                 </Spinner>
             );
         } else {
@@ -33,7 +36,7 @@ function CustomSubmitButton(props) {
             disabled={props.flagSending}
         >
             <IconForButton flagSending={props.flagSending} />
-            <span className="ml-1">{props.flagSending ? "Enviando..." : "Enviar"}</span>
+            <span className="ms-1">{props.flagSending ? lang.sending : lang.send}</span>
         </Button>
     );
 }

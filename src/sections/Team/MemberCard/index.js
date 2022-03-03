@@ -2,6 +2,7 @@ import { Card, Row, Col } from 'react-bootstrap';
 import './index.css';
 import { ReactComponent as IconLinkedIn } from '../icons/linkedin.svg';
 import { ReactComponent as IconGitHub } from '../icons/github.svg';
+import { ReactComponent as IconWebsite } from '../icons/website.svg';
 
 function MemberCard(props) {
 
@@ -12,17 +13,16 @@ function MemberCard(props) {
                     <Col className="d-flex align-items-center justify-content-center" xs={6}>
                         <Card.Img variant="top" src={props.picSrc} className="rounded rounded-circle max-height-profile-pic" />
                     </Col>
-                    <Col className="pl-0">
-                        <Card.Body className="pl-0">
+                    <Col className="ps-0">
+                        <Card.Body className="ps-0">
                             <Card.Title className="mb-0">{props.name}</Card.Title>
-                            <Card.Text className="font-weight-light text-nowrap mb-1">
+                            <Card.Text className="fw-light text-nowrap mb-1">
                                 {props.subtitle}
                             </Card.Text>
                             <Card.Text>
-                                {/* <Container fluid className="px-0 d-flex justify-content-start"> */}
-                                    {props.urlLinkedIn && <a href={props.urlLinkedIn} className="icon-social-team"><IconLinkedIn /></a>}
-                                    {props.urlGitHub && <a href={props.urlGitHub} className="icon-social-team"><IconGitHub /></a>}
-                                {/* </Container> */}
+                                {props.urlLinkedIn && <a href={props.urlLinkedIn} target='_blank' rel='noreferrer' className="icon-social-team"><IconLinkedIn /></a>}
+                                {props.urlGitHub && <a href={props.urlGitHub} target='_blank' rel='noreferrer' className="icon-social-team"><IconGitHub /></a>}
+                                {props.urlWebsite && <a href={props.urlWebsite} target='_blank' rel='noreferrer' className="icon-social-team"><IconWebsite /></a>}
                             </Card.Text>
                         </Card.Body>
                     </Col>

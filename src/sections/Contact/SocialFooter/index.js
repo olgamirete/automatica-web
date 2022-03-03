@@ -12,7 +12,7 @@ function SocialFooter() {
                     variant="invisible"
                     size="sm"
                 >
-                    <IconTelephone fill="var(--light)" />
+                    <IconTelephone className="fill-light" />
                 </Button>
             </Col>
             <Col className="m-0 p-0 text-center" md="auto">
@@ -21,7 +21,7 @@ function SocialFooter() {
                     variant="invisible"
                     size="sm"
                 >
-                    <IconWhatsApp fill="var(--light)" />
+                    <IconWhatsApp className="fill-light" />
                 </Button>
             </Col>
             <Col className="m-0 p-0 text-center" md="auto" >
@@ -30,7 +30,7 @@ function SocialFooter() {
                     variant="invisible"
                     size="sm"
                 >
-                    <IconEmail fill="var(--light)" />
+                    <IconEmail className="fill-light" />
                 </Button>
             </Col>
         </Row>

@@ -1,19 +1,17 @@
 import InfoCard from '../../components/InfoCard';
 import { Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import LangContext from 'contexts/LangContext';
 
 function About(props) {
+    
+    const lang = useContext(LangContext);
+
     return (
-        <InfoCard variant="dark" bgOpacity={8} className="text-light border border-light" >
-            <h1 className="mb-4 text-center">Acerca</h1>
-            <p className="lead text-center">
-                Nuestro <span className="text-warning font-weight-bold">objetivo</span> es ayudar a las empresas a <span className="text-info font-weight-bold">automatizar su trabajo</span>,
-                para que no tengan que perder el tiempo haciendo tareas repetitivas o
-                engorrosas.
-            </p>
-            {/* <p className="lead text-center lead tex">
-                Luego de trabajar con nosotros, muchas de <span className="font-weight-bold text-pink">sus tareas se harán solas y en menor tiempo</span>, mientras ustedes se preparan el café.
-            </p> */}
+        <InfoCard className="bg-dark text-light border border-light" >
+            <h1 className="mb-4 text-center">{lang.about}</h1>
+            {lang.about_text}
             <Row>
                 <Col className="text-center">
                     <Button
@@ -23,7 +21,7 @@ function About(props) {
                         to="/showcase"
                         as={Link}
                         >
-                        ¿Cómo saber si me pueden ayudar?
+                        {lang.how_to_know_if_we_can_help}
                     </Button>
                 </Col>
             </Row>
@@ -32,10 +30,10 @@ function About(props) {
                 Mejorar la calidad de vida de las personas.
             </p> */}
             {/* <p className="lead text-center">
-                Nuestra <span className="font-weight-bold text-danger">misión</span>, mejorar la calidad de vida de las personas.
+                Nuestra <span className="fw-bold text-danger">misión</span>, mejorar la calidad de vida de las personas.
             </p> */}
             {/* <p className="lead text-center">
-                Creemos <span className="font-weight-bold text-warning">Nadie</span> debería tener que hacer <span className="text-danger font-weight-bold">tareas repetitivas</span> y <span className="text-danger font-weight-bold">manuales</span> en su trabajo, y por eso creamos Automatica.
+                Creemos <span className="fw-bold text-warning">Nadie</span> debería tener que hacer <span className="text-danger fw-bold">tareas repetitivas</span> y <span className="text-danger fw-bold">manuales</span> en su trabajo, y por eso creamos Automatica.
             </p> */}
         </InfoCard>
     );
