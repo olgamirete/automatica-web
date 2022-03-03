@@ -14,7 +14,7 @@ const CustomCard = (props) => {
           </div>
           <div className="p-0 m-0 w-100 d-flex align-items-center">
             <Card.Body className="p-0 m-0">
-              <Card.Text className={`fw-light text-nowrap mb-1 ${props.reverse === true ? " text-end" : ""}`}>
+              <Card.Text className={`fw-light mb-1 ${props.reverse === true ? " text-end" : ""}`}>
                 {props.children}
               </Card.Text>
             </Card.Body>

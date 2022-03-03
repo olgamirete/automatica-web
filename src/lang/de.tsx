@@ -22,29 +22,29 @@ const de = {
   how_to_know_if_we_can_help: 'Schauen sie sich unser Portfolio an!',
   showcase: 'Portfolio',
   showcase_1: (
-    <span className="text-wrap">
+    <>
       Beratung zu Automatisierung und Simplifizierung von <span className="fw-bold text-info">Prozessen</span>.
-    </span>
+    </>
   ),
   showcase_2: (
-    <span className="text-wrap">
+    <>
       Konzeption und Umsetzung von KPIs und <span className="fw-bold text-pink">Dashboards</span>, die sich an Ihre Bedürfnisse anpassen.
-    </span>
+    </>
   ),
   showcase_3: (
-    <span className="text-wrap">
+    <>
       <span className="text-info fw-bold">Schulung</span> in PowerBI, Tableau, QlikView, QuickSight, Excel, Google Sheets y viel mehr.
-    </span>
+    </>
   ),
   showcase_4: (
-    <span className="text-wrap">
+    <>
       Konzeption und Umsetzung von <span className="text-warning fw-bold">Machine Learning</span> Lösungen, die das Beste aus Ihren Daten erschaffen.
-    </span>
+    </>
   ),
   showcase_5: (
-    <span className="text-wrap">
+    <>
       <span className="text-secondary fw-bold">Automatisierung</span> von: Datenextrahierung, Dokumentgenerierung, Berichtsaktualisierung, zwischen Anderen.
-    </span>
+    </>
   ),
   ask_without_compromise: 'Kontaktieren Sie uns!',
   contact: 'Kontakt',
