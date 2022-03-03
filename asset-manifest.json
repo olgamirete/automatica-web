@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb12d60d.chunk.css",
+    "main.js": "/static/js/main.6f6fcc79.chunk.js",
+    "main.js.map": "/static/js/main.6f6fcc79.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.42fec210.js",
+    "runtime-main.js.map": "/static/js/runtime-main.42fec210.js.map",
+    "static/css/2.5c573378.chunk.css": "/static/css/2.5c573378.chunk.css",
+    "static/js/2.a8713f55.chunk.js": "/static/js/2.a8713f55.chunk.js",
+    "static/js/2.a8713f55.chunk.js.map": "/static/js/2.a8713f55.chunk.js.map",
+    "static/js/3.1cd33034.chunk.js": "/static/js/3.1cd33034.chunk.js",
+    "static/js/3.1cd33034.chunk.js.map": "/static/js/3.1cd33034.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.5c573378.chunk.css.map": "/static/css/2.5c573378.chunk.css.map",
+    "static/css/main.fb12d60d.chunk.css.map": "/static/css/main.fb12d60d.chunk.css.map",
+    "static/js/2.a8713f55.chunk.js.LICENSE.txt": "/static/js/2.a8713f55.chunk.js.LICENSE.txt",
+    "static/media/ai_robot.4f6dd359.svg": "/static/media/ai_robot.4f6dd359.svg",
+    "static/media/certificate.98d51fce.svg": "/static/media/certificate.98d51fce.svg",
+    "static/media/chip.62bdcc71.svg": "/static/media/chip.62bdcc71.svg",
+    "static/media/dashboard.a368dfac.svg": "/static/media/dashboard.a368dfac.svg",
+    "static/media/email.5f137f89.svg": "/static/media/email.5f137f89.svg",
+    "static/media/federico.c867d8f8.png": "/static/media/federico.c867d8f8.png",
+    "static/media/flash.c36d92d0.svg": "/static/media/flash.c36d92d0.svg",
+    "static/media/francisco.bbcd5d95.png": "/static/media/francisco.bbcd5d95.png",
+    "static/media/github.22e65707.svg": "/static/media/github.22e65707.svg",
+    "static/media/julieta.2033e551.png": "/static/media/julieta.2033e551.png",
+    "static/media/linkedin.2eda7bdd.svg": "/static/media/linkedin.2eda7bdd.svg",
+    "static/media/logo-v2.f8ad2c24.svg": "/static/media/logo-v2.f8ad2c24.svg",
+    "static/media/sendButton.9e10bd55.svg": "/static/media/sendButton.9e10bd55.svg",
+    "static/media/telephone.eb339eec.svg": "/static/media/telephone.eb339eec.svg",
+    "static/media/whatsapp.94f17728.svg": "/static/media/whatsapp.94f17728.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42fec210.js",
+    "static/css/2.5c573378.chunk.css",
+    "static/js/2.a8713f55.chunk.js",
+    "static/css/main.fb12d60d.chunk.css",
+    "static/js/main.6f6fcc79.chunk.js"
+  ]
+}
