@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import BackgroundJS from "components/BackgroundJS";
 import NavBarAutomatica from "components/NavBarAutomatica";
@@ -14,7 +13,6 @@ import "./App.css";
 import useHelpers from "hooks/useHelpers";
 import NotFound from "sections/NotFound";
 import LangContext from "contexts/LangContext";
-import en from "lang/en";
 import useLanguage from "hooks/useLanguage";
 
 // For internationalization, try and get the prefered language from the system.
