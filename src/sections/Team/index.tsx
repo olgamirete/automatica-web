@@ -1,5 +1,5 @@
 import { Row } from "react-bootstrap";
-import InfoCard from "../../components/InfoCard";
+import InfoCard from "components/InfoCard";
 import MemberCard from "./MemberCard";
 import picFederico from "./pictures/federico.png";
 import picJulieta from "./pictures/julieta.png";

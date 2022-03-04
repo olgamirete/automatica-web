@@ -1,7 +1,7 @@
 import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import CustomCard from "../../components/CustomCard";
-import InfoCard from "../../components/InfoCard";
+import CustomCard from "components/CustomCard";
+import InfoCard from "components/InfoCard";
 import { ReactComponent as IconBrainChip } from "./icons/chip.svg";
 import { ReactComponent as IconDashboard } from "./icons/dashboard.svg";
 import { ReactComponent as IconCertificate } from "./icons/certificate.svg";

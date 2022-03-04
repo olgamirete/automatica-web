@@ -1,7 +1,7 @@
 import LangContext from 'contexts/LangContext';
 import { useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import InfoCard from '../../components/InfoCard';
+import InfoCard from 'components/InfoCard';
 
 function NotFound(props) {
     const lang = useContext(LangContext)

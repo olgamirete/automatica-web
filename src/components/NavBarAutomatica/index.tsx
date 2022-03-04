@@ -3,7 +3,7 @@ import { Nav, Navbar, NavbarProps } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AutomaticaLogo from './logo-v2.svg'
 import './index.css'
-import useHelpers from '../../hooks/useHelpers'
+import useHelpers from 'hooks/useHelpers'
 import LanguageSelector from 'components/LanguageSelector'
 
 export interface NavBarAutomaticaProps extends NavbarProps {

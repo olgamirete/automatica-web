@@ -1,4 +1,4 @@
-import InfoCard from '../../components/InfoCard';
+import InfoCard from 'components/InfoCard';
 import { Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';

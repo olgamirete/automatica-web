@@ -2,7 +2,7 @@ import LangContext from 'contexts/LangContext';
 import { useContext } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import InfoCard from '../../components/InfoCard';
+import InfoCard from 'components/InfoCard';
 
 function Home(props) {
     const lang = useContext(LangContext);
