@@ -23,7 +23,7 @@ const de = {
   showcase: 'Portfolio',
   showcase_1: (
     <>
-      Beratung zu Automatisierung und Simplifizierung von <span className="fw-bold text-info">Prozessen</span>.
+      Beratung zur Automatisierung und Simplifizierung von <span className="fw-bold text-info">Prozessen</span>.
     </>
   ),
   showcase_2: (
