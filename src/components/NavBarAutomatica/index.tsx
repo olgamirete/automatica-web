@@ -54,6 +54,8 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
           alt="Automatica logo"
         />
       </Navbar.Brand>
+      <LanguageSelector setLanguage={setLanguage} />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav
           ref={navRef}
@@ -80,13 +82,7 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
               )
             })}
         </Nav>
-        {/* <Form inline>
-            <FormControl type="text" placeholder="Search" className="me-sm-2" />
-            <Button variant="outline-success">Search</Button>
-        </Form> */}
       </Navbar.Collapse>
-      <LanguageSelector setLanguage={setLanguage} />
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
     </Navbar>
   )
 }
