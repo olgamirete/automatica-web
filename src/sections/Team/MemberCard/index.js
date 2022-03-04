@@ -1,8 +1,8 @@
 import { Card, Row, Col } from 'react-bootstrap';
 import './index.css';
-import { ReactComponent as IconLinkedIn } from '../icons/linkedin.svg';
-import { ReactComponent as IconGitHub } from '../icons/github.svg';
-import { ReactComponent as IconWebsite } from '../icons/website.svg';
+import { ReactComponent as IconLinkedIn } from 'assets/icons/linkedin.svg';
+import { ReactComponent as IconGitHub } from 'assets/icons/github.svg';
+import { ReactComponent as IconWebsite } from 'assets/icons/website.svg';
 
 function MemberCard(props) {
 
