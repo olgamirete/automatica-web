@@ -17,7 +17,7 @@ function SocialFooter() {
             </Col>
             <Col className="m-0 p-0 text-center" md="auto">
                 <Button
-                    href="https://api.whatsapp.com/send?phone=+5493425783357"
+                    href="https://api.whatsapp.com/send?phone=+34634869488"
                     variant="invisible"
                     size="sm"
                 >
