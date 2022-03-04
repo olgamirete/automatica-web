@@ -63,7 +63,7 @@ const en = {
   contact: 'Contact',
   contact_us: 'Contact us',
   we_love_to_hear_from_you:
-    'Lets do something great.',
+    'Let\'s do something great.',
   name: 'Name',
   company: 'Company',
   email: 'E-Mail',
