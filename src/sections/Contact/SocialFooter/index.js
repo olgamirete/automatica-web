@@ -8,7 +8,7 @@ function SocialFooter() {
         <Row className="justify-content-center mt-3" xs={6}>
             <Col className="m-0 p-0 text-center" md="auto" >
                 <Button
-                    href="tel:+54 9 342 5783 357"
+                    href="tel:+34 634 86 94 88"
                     variant="invisible"
                     size="sm"
                 >
