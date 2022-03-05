@@ -54,7 +54,7 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
           alt="Automatica logo"
         />
       </Navbar.Brand>
-      <LanguageSelector setLanguage={setLanguage} />
+      <LanguageSelector setLanguage={setLanguage} className="d-md-none" />
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav
@@ -83,6 +83,7 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
             })}
         </Nav>
       </Navbar.Collapse>
+      <LanguageSelector setLanguage={setLanguage} className="d-none d-md-block" />
     </Navbar>
   )
 }

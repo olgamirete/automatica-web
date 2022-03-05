@@ -1,15 +1,15 @@
-import { useContext } from 'react'
+import { HTMLProps, useContext } from 'react'
 import LangContext, { availableLanguages } from 'contexts/LangContext'
-import { ButtonGroup, ToggleButton } from 'react-bootstrap'
+import { ToggleButton } from 'react-bootstrap'
 
-export interface LanguageSelectorProps {
+export interface LanguageSelectorProps extends HTMLProps<HTMLDivElement> {
   setLanguage: (langCode: string) => void
 }
 
-const LanguageSelector: React.FC<LanguageSelectorProps> = ({ setLanguage }) => {
+const LanguageSelector: React.FC<LanguageSelectorProps> = ({ setLanguage, className, ...props }) => {
   const lang = useContext(LangContext)
   return (
-    <ButtonGroup>
+    <div className={`btn-group ${className}`} role="group" {...props}>
       {availableLanguages.map((avLang, i) => (
         <ToggleButton
           key={i}
@@ -28,7 +28,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ setLanguage }) => {
           </div>
         </ToggleButton>
       ))}
-    </ButtonGroup>
+    </div>
   )
 }
 
