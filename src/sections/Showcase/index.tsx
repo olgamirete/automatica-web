@@ -26,7 +26,7 @@ const Showcase: React.FC = () => {
     <InfoCard className="bg-dark text-light border border-light px-2 px-sm-5">
       <h1 className="mb-4 text-center">{lang.showcase}</h1>
         {ShowcaseContents.map((content, i) => (
-          <CustomCard icon={content.icon} reverse={i % 2 !== 0}>
+          <CustomCard key={i} icon={content.icon} reverse={i % 2 !== 0}>
             {content.text}
           </CustomCard>
         ))}
