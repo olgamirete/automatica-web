@@ -1,6 +1,6 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 import { useRef, useMemo } from "react";
-import { useFrame } from '@react-three/fiber';
+import { useFrame } from "@react-three/fiber";
 
 // With help from: https://codesandbox.io/s/eager-noyce-6rvwr?from-embed=&file=/src/index.js:753-776
 
@@ -16,41 +16,47 @@ import { useFrame } from '@react-three/fiber';
 // }
 
 var getHeight = function (x, y, t) {
-    // const offsetX = 2000;
-    // const offsetY = -100;
+  // const offsetX = 2000;
+  // const offsetY = -100;
 
-    // x = x + 1.0*w;
-    // y = y + 0.5*h;
-    // x += offsetValue;
-    // y += offsetValue;
+  // x = x + 1.0*w;
+  // y = y + 0.5*h;
+  // x += offsetValue;
+  // y += offsetValue;
 
-    // x += Math.random()*100;
-    // y += Math.random()*100;
-    const scale = 10;
-    x = x * scale;
-    y = y * scale;
+  // x += Math.random()*100;
+  // y += Math.random()*100;
+  const scale = 10;
+  x = x * scale;
+  y = y * scale;
 
-    let r = Math.sqrt(x * x + y * y) / 3;
-    r = Math.pow(r, .92);
-    // const r = (x+y)/2;
-    const angle = Math.atan2(y, x);
-    t = t / 30;
+  let r = Math.sqrt(x * x + y * y) / 3;
+  r = Math.pow(r, 0.92);
+  // const r = (x+y)/2;
+  const angle = Math.atan2(y, x);
+  t = t / 30;
 
-    // const fa = r < 50 ? 0 : 1;
-    // const fa = r < 50 ? Math.sin(r*(Math.PI/2)/50) : 1;
-    const fa = 1;
-    // return Math.sin((r+t)/(10*Math.PI))*5000*(1/r);
-    // return (Math.sin((r+t)/(5*2*Math.PI))+0)*50*(1/r);
-    return fa * (Math.sin((angle+t/12)*5+r*2*Math.PI/100)*2*Math.sin(r*2*Math.PI/100+t/2));
-    // return Math.sin((r+t)/(5*2*Math.PI))*500*Math.sqrt(1/(r+1));
-    // return Math.sin((x+t)/(5*2*Math.PI))*50 + Math.sin((y-t)/(5*2*Math.PI))*50;
+  // const fa = r < 50 ? 0 : 1;
+  // const fa = r < 50 ? Math.sin(r*(Math.PI/2)/50) : 1;
+  const fa = 1;
+  // return Math.sin((r+t)/(10*Math.PI))*5000*(1/r);
+  // return (Math.sin((r+t)/(5*2*Math.PI))+0)*50*(1/r);
+  return (
+    fa *
+    (Math.sin((angle + t / 12) * 5 + (r * 2 * Math.PI) / 100) *
+      2 *
+      Math.sin((r * 2 * Math.PI) / 100 + t / 2))
+  );
+  // return Math.sin((r+t)/(5*2*Math.PI))*500*Math.sqrt(1/(r+1));
+  // return Math.sin((x+t)/(5*2*Math.PI))*50 + Math.sin((y-t)/(5*2*Math.PI))*50;
 
-    // return Math.sin((r+t)/(5*2*Math.PI))*50*Math.sin(angle*5+(t+r/1.5)/100); //Fav
+  // return Math.sin((r+t)/(5*2*Math.PI))*50*Math.sin(angle*5+(t+r/1.5)/100); //Fav
 
-    // return fa * ( Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale); //Fav
-}
+  // return fa * ( Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale); //Fav
+};
 
-let auxPositions = [], colors = [];
+let auxPositions = [],
+  colors = [];
 
 const maxAngle = 359;
 const maxRadius = 150;
@@ -58,147 +64,154 @@ const stepRadius = 2;
 const stepAngle = 1;
 // const stepAngle = 2;
 
-for (let i = 0; i <= maxAngle/stepAngle; i++) {
-    for (let j = 0; j <= maxRadius/stepRadius; j++) {
-        // let x = i * step * (100+(Math.random()-.5)*2*1)/100;
-        // let z = j * step * (100+(Math.random()-.5)*2*1)/100;
-        let x = Math.cos(i*stepAngle*(2*Math.PI/180))*j*stepRadius;
-        let z = Math.sin(i*stepAngle*(2*Math.PI/180))*j*stepRadius;
-        let y = getHeight(x, z, 0);
+for (let i = 0; i <= maxAngle / stepAngle; i++) {
+  for (let j = 0; j <= maxRadius / stepRadius; j++) {
+    // let x = i * step * (100+(Math.random()-.5)*2*1)/100;
+    // let z = j * step * (100+(Math.random()-.5)*2*1)/100;
+    let x = Math.cos(i * stepAngle * ((2 * Math.PI) / 180)) * j * stepRadius;
+    let z = Math.sin(i * stepAngle * ((2 * Math.PI) / 180)) * j * stepRadius;
+    let y = getHeight(x, z, 0);
 
-        // var newColor = new THREE.Color(0x00b8ff);
-        const newColor = new THREE.Color(0xaaaaaa);
-        // const newColor = new THREE.Color(0xff0000);
+    // var newColor = new THREE.Color(0x00b8ff);
+    const newColor = new THREE.Color(0xaaaaaa);
+    // const newColor = new THREE.Color(0xff0000);
 
-        if(Math.random()*150 > j*stepRadius || j*stepRadius < 20){
-            auxPositions.push(x, y, z);
-            colors.push(newColor.r, newColor.g, newColor.b);
-        }
+    if (Math.random() * 150 > j * stepRadius || j * stepRadius < 20) {
+      auxPositions.push(x, y, z);
+      colors.push(newColor.r, newColor.g, newColor.b);
     }
+  }
 }
 
 auxPositions = new Float32Array(auxPositions);
 colors = new Float32Array(colors);
 
 function DotField(props) {
-    const pointsRef = useRef(null);
+  const pointsRef = useRef(null);
 
-    // const step = 1.5;
-    // const n = 250;
-    // const [positions, setPositions] = useState(auxPositions);
+  // const step = 1.5;
+  // const n = 250;
+  // const [positions, setPositions] = useState(auxPositions);
 
-    const startTime = useMemo(() => (new Date()).getTime() * .001, []);
+  const startTime = useMemo(() => new Date().getTime() * 0.001, []);
 
-    // useEffect(() => {
-    //     if (pointsRef.current) {
-    //         pointsRef.current.geometry.attributes.position.needsUpdate = true;
-    //     }
-    // }, []);
+  // useEffect(() => {
+  //     if (pointsRef.current) {
+  //         pointsRef.current.geometry.attributes.position.needsUpdate = true;
+  //     }
+  // }, []);
 
-    // useFrame(() => {
-    //     const currentTime = (new Date()).getTime() * .001;
-    //     const elapsedTime = currentTime - startTime;
-    //     // console.log(elapsedTime);
-        
-    //     const dotCount = positions.length / 3;
+  // useFrame(() => {
+  //     const currentTime = (new Date()).getTime() * .001;
+  //     const elapsedTime = currentTime - startTime;
+  //     // console.log(elapsedTime);
 
-    //     setPositions((oldPos) => {
-    //         let newPos = oldPos;
-    //         for (let i = 0; i < dotCount; i++) {
-    //             const x = oldPos[i * 3 + 0];
-    //             const z = oldPos[i * 3 + 2];
-                
-    //             // And now we update the missing coordinate
-    //             newPos[i * 3 + 1] = getHeight(x, z, -elapsedTime * 100);   
-    //         }
-    //         return newPos;
-    //     });
-    // });
+  //     const dotCount = positions.length / 3;
 
-    useFrame(() => {
-        if (pointsRef.current) {
-            
-            const currentTime = (new Date()).getTime() * .001;
-            const elapsedTime = currentTime - startTime;
-            // console.log(elapsedTime);
-            
-            let points = pointsRef.current;
-            points.geometry.attributes.position.needsUpdate = true;
-            points.geometry.attributes.color.needsUpdate = true;
-            let dots = points.geometry.attributes.position.array;
-            const dotCount = dots.length / 3;
-            let colors = points.geometry.attributes.color.array;
-            // console.log(colors.length);
-            // console.log(colors[0]);
-            
-            for (let i = 0; i < dotCount; i++) {
+  //     setPositions((oldPos) => {
+  //         let newPos = oldPos;
+  //         for (let i = 0; i < dotCount; i++) {
+  //             const x = oldPos[i * 3 + 0];
+  //             const z = oldPos[i * 3 + 2];
 
-                const x = dots[i * 3 + 0];
-                // y = dots[i*3+1];
-                const z = dots[i * 3 + 2];
+  //             // And now we update the missing coordinate
+  //             newPos[i * 3 + 1] = getHeight(x, z, -elapsedTime * 100);
+  //         }
+  //         return newPos;
+  //     });
+  // });
 
-                // And now we update the missing coordinate
-                const dotHeight = getHeight(x, z, -elapsedTime * 100);
-                dots[i * 3 + 1] = dotHeight;
-                // dots[i * 3 + 1] = elapsedTime*100;
-                // colors[i] = new THREE.Color(0, 100, 50);
-                // if(dotHeight > 1) {
-                    // rgb(82%, 31%, 53%) -> pink
-                    // rgb(100%, 76%, 3%) -> yellow
-                    // rgb(9%, 64%, 72%)  -> info
-                    // rgb(97.3%, 97.6%, 98%)
-                    // colors[i * 3 + 0] = .82; // expects a value between 0 and 1.
-                    // colors[i * 3 + 1] = .31; // expects a value between 0 and 1.
-                    // colors[i * 3 + 2] = .53; // expects a value between 0 and 1.
-                // } else {
-                    colors[i * 3 + 0] = .973 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
-                    colors[i * 3 + 1] = .976 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
-                    colors[i * 3 + 2] = .98 * Math.max(dotHeight/2,.2); // expects a value between 0 and 1.
-                    // colors[i * 3 + 0] = 1; // expects a value between 0 and 1.
-                    // colors[i * 3 + 1] = 1; // expects a value between 0 and 1.
-                    // colors[i * 3 + 2] = 1; // expects a value between 0 and 1.
-                // }
-                
-            }
-        }
-    });
+  useFrame(() => {
+    if (pointsRef.current) {
+      const currentTime = new Date().getTime() * 0.001;
+      const elapsedTime = currentTime - startTime;
+      // console.log(elapsedTime);
 
+      let points = pointsRef.current;
+      points.geometry.attributes.position.needsUpdate = true;
+      points.geometry.attributes.color.needsUpdate = true;
+      let dots = points.geometry.attributes.position.array;
+      const dotCount = dots.length / 3;
+      let colors = points.geometry.attributes.color.array;
+      // console.log(colors.length);
+      // console.log(colors[0]);
 
-    // const [positions, colors] = useMemo(() => {
+      for (let i = 0; i < dotCount; i++) {
+        const x = dots[i * 3 + 0];
+        // y = dots[i*3+1];
+        const z = dots[i * 3 + 2];
 
-    //     let positions = [], colors = [];
+        // And now we update the missing coordinate
+        const dotHeight = getHeight(x, z, -elapsedTime * 100);
+        dots[i * 3 + 1] = dotHeight;
+        // dots[i * 3 + 1] = elapsedTime*100;
+        // colors[i] = new THREE.Color(0, 100, 50);
+        // if(dotHeight > 1) {
+        // rgb(82%, 31%, 53%) -> pink
+        // rgb(100%, 76%, 3%) -> yellow
+        // rgb(9%, 64%, 72%)  -> info
+        // rgb(97.3%, 97.6%, 98%)
+        // colors[i * 3 + 0] = .82; // expects a value between 0 and 1.
+        // colors[i * 3 + 1] = .31; // expects a value between 0 and 1.
+        // colors[i * 3 + 2] = .53; // expects a value between 0 and 1.
+        // } else {
+        colors[i * 3 + 0] = 0.973 * Math.max(dotHeight / 2, 0.2); // expects a value between 0 and 1.
+        colors[i * 3 + 1] = 0.976 * Math.max(dotHeight / 2, 0.2); // expects a value between 0 and 1.
+        colors[i * 3 + 2] = 0.98 * Math.max(dotHeight / 2, 0.2); // expects a value between 0 and 1.
+        // colors[i * 3 + 0] = 1; // expects a value between 0 and 1.
+        // colors[i * 3 + 1] = 1; // expects a value between 0 and 1.
+        // colors[i * 3 + 2] = 1; // expects a value between 0 and 1.
+        // }
+      }
+    }
+  });
 
-    //     for (let i = -n; i <= n; i++) {
-    //         for (let j = -n; j <= n; j++) {
-    //             let x = i * step;
-    //             let z = j * step;
-    //             let y = getHeight(x, z, 0);
+  // const [positions, colors] = useMemo(() => {
 
-    //             var newColor = new THREE.Color(0xd6b80e);
-    //             newColor = new THREE.Color(0xaaaaaa);
+  //     let positions = [], colors = [];
 
-    //             positions.push(x, y, z);
-    //             colors.push(newColor.r, newColor.g, newColor.b);
-    //         }
-    //     }
-        
-    //     return [new Float32Array(positions), new Float32Array(colors)];
+  //     for (let i = -n; i <= n; i++) {
+  //         for (let j = -n; j <= n; j++) {
+  //             let x = i * step;
+  //             let z = j * step;
+  //             let y = getHeight(x, z, 0);
 
-    // }, [step, n]);
+  //             var newColor = new THREE.Color(0xd6b80e);
+  //             newColor = new THREE.Color(0xaaaaaa);
 
-    return (
-        <points ref={pointsRef}>
-            <bufferGeometry attach="geometry">
-                <bufferAttribute attachObject={["attributes", "position"]}
-                    count={colors.length / 3}
-                    array={auxPositions} itemSize={3} />
-                <bufferAttribute attachObject={["attributes", "color"]}
-                    count={colors.length / 3}
-                    array={colors} itemSize={3} />
-            </bufferGeometry>
-            <pointsMaterial attach="material" vertexColors size={.2} sizeAttenuation={true} />
-        </points>
-    )
+  //             positions.push(x, y, z);
+  //             colors.push(newColor.r, newColor.g, newColor.b);
+  //         }
+  //     }
+
+  //     return [new Float32Array(positions), new Float32Array(colors)];
+
+  // }, [step, n]);
+
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry attach="geometry">
+        <bufferAttribute
+          attachObject={["attributes", "position"]}
+          count={colors.length / 3}
+          array={auxPositions}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attachObject={["attributes", "color"]}
+          count={colors.length / 3}
+          array={colors}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        attach="material"
+        vertexColors
+        size={0.2}
+        sizeAttenuation={true}
+      />
+    </points>
+  );
 }
 
 export default DotField;

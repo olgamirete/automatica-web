@@ -38,6 +38,6 @@ const Team: React.FC = () => {
       </Row>
     </InfoCard>
   );
-}
+};
 
 export default Team;

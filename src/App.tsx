@@ -1,43 +1,43 @@
-import BackgroundJS from 'components/BackgroundJS'
-import NavBarAutomatica from 'components/NavBarAutomatica'
-import useCameraParams from 'hooks/useCameraParams'
-import Home from 'sections/Home'
-import Showcase from 'sections/Showcase'
-import About from 'sections/About'
-import Contact from 'sections/Contact'
-import Team from 'sections/Team'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { SwitchTransition, CSSTransition } from 'react-transition-group'
-import './App.css'
-import useHelpers from 'hooks/useHelpers'
-import NotFound from 'sections/NotFound'
-import LangContext, { availableLanguages } from 'contexts/LangContext'
-import useLanguage from 'hooks/useLanguage'
-import React, { Fragment, ReactElement } from 'react'
+import BackgroundJS from "components/BackgroundJS";
+import NavBarAutomatica from "components/NavBarAutomatica";
+import useCameraParams from "hooks/useCameraParams";
+import Home from "sections/Home";
+import Showcase from "sections/Showcase";
+import About from "sections/About";
+import Contact from "sections/Contact";
+import Team from "sections/Team";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import "./App.css";
+import useHelpers from "hooks/useHelpers";
+import NotFound from "sections/NotFound";
+import LangContext, { availableLanguages } from "contexts/LangContext";
+import useLanguage from "hooks/useLanguage";
+import React, { Fragment, ReactElement } from "react";
 
 // For internationalization, try and get the prefered language from the system.
 // Also show option to change the language. If the language is changed, store
 // the new setting with the localStorage api.
 
 interface Section {
-  path: String
-  element: ReactElement
+  path: String;
+  element: ReactElement;
 }
 
 const App: React.FC = () => {
-  const [language, setLanguage] = useLanguage()
+  const [language, setLanguage] = useLanguage();
 
-  let location = useLocation()
-  const helpers = useHelpers()
+  let location = useLocation();
+  const helpers = useHelpers();
 
-  const [cameraParams, cameraFunctions] = useCameraParams(location)
+  const [cameraParams, cameraFunctions] = useCameraParams(location);
 
   const sections: Array<Section> = [
-    { path: '/about', element: <About /> },
-    { path: '/showcase', element: <Showcase /> },
-    { path: '/contact', element: <Contact /> },
-    { path: '/team', element: <Team /> },
-  ]
+    { path: "/about", element: <About /> },
+    { path: "/showcase", element: <Showcase /> },
+    { path: "/contact", element: <Contact /> },
+    { path: "/team", element: <Team /> },
+  ];
 
   return (
     <LangContext.Provider value={language}>
@@ -49,13 +49,13 @@ const App: React.FC = () => {
           setLanguage={setLanguage}
         />
 
-        <div className='container-fluid'>
+        <div className="container-fluid">
           <div className="col" id="content-container">
             <div className="row">
               <SwitchTransition mode="out-in">
                 <CSSTransition
                   key={helpers.functions.getSectionKeyFromPath(
-                    location.pathname,
+                    location.pathname
                   )}
                   classNames="fade"
                   onExited={helpers.functions.scrollToTop}
@@ -67,7 +67,9 @@ const App: React.FC = () => {
                       <Fragment key={i_lang}>
                         <Route path={`/${avLang._code}`} element={<Home />} />
                         {sections.map((section, i_section) => (
-                          <Fragment key={`${i_lang}_${i_section}_${avLang._code}`}>
+                          <Fragment
+                            key={`${i_lang}_${i_section}_${avLang._code}`}
+                          >
                             <Route
                               path={`/${avLang._code}${section.path}`}
                               element={section.element}
@@ -89,7 +91,7 @@ const App: React.FC = () => {
         </div>
       </div>
     </LangContext.Provider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

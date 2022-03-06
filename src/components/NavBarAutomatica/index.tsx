@@ -1,15 +1,15 @@
-import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react'
-import { Nav, Navbar, NavbarProps } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import AutomaticaLogo from 'assets/svg/logo.svg'
-import './index.css'
-import useHelpers from 'hooks/useHelpers'
-import LanguageSelector from 'components/LanguageSelector'
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
+import { Nav, Navbar, NavbarProps } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import AutomaticaLogo from "assets/svg/logo.svg";
+import "./index.css";
+import useHelpers from "hooks/useHelpers";
+import LanguageSelector from "components/LanguageSelector";
 
 export interface NavBarAutomaticaProps extends NavbarProps {
-  cameraFunctions: any
-  location: any
-  setLanguage: Dispatch<SetStateAction<string>>
+  cameraFunctions: any;
+  location: any;
+  setLanguage: Dispatch<SetStateAction<string>>;
 }
 
 const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
@@ -18,23 +18,23 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
   setLanguage,
   ...props
 }) => {
-  const navRef = useRef(null)
-  const helpers = useHelpers()
+  const navRef = useRef(null);
+  const helpers = useHelpers();
 
-  const path = location.pathname
-  const navLinks = helpers.constants.navLinks
-  const getKeyFromPath = helpers.functions.getSectionKeyFromPath
+  const path = location.pathname;
+  const navLinks = helpers.constants.navLinks;
+  const getKeyFromPath = helpers.functions.getSectionKeyFromPath;
 
-  const [activeKey, setActiveKey] = useState(getKeyFromPath(path))
+  const [activeKey, setActiveKey] = useState(getKeyFromPath(path));
 
   useEffect(() => {
     // Location changed
-    const newKey = getKeyFromPath(location.pathname)
-    setActiveKey(newKey)
-    setFlagExpanded(false)
-  }, [location.pathname, getKeyFromPath])
+    const newKey = getKeyFromPath(location.pathname);
+    setActiveKey(newKey);
+    setFlagExpanded(false);
+  }, [location.pathname, getKeyFromPath]);
 
-  const [flagExpanded, setFlagExpanded] = useState(false)
+  const [flagExpanded, setFlagExpanded] = useState(false);
 
   return (
     <Navbar
@@ -66,26 +66,29 @@ const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
           {navLinks
             .filter((x) => x.showInNavbar)
             .map((nl, i) => {
-              const isActive = nl.eventKey === activeKey
+              const isActive = nl.eventKey === activeKey;
               return (
                 <Nav.Link
                   key={i}
                   eventKey={nl.eventKey}
                   to={nl.link}
                   className={
-                    isActive ? 'border-warning active-link-custom' : ''
+                    isActive ? "border-warning active-link-custom" : ""
                   }
                   as={Link}
                 >
                   {nl.text}
                 </Nav.Link>
-              )
+              );
             })}
         </Nav>
       </Navbar.Collapse>
-      <LanguageSelector setLanguage={setLanguage} className="d-none d-md-block" />
+      <LanguageSelector
+        setLanguage={setLanguage}
+        className="d-none d-md-block"
+      />
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBarAutomatica
+export default NavBarAutomatica;

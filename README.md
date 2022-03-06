@@ -6,7 +6,7 @@
 
 ## Technologies used / Tecnologías utilizadas
 
- - ReactJS
- - Bootstrap
- - ThreeJS
- - PHP
+- ReactJS
+- Bootstrap
+- ThreeJS
+- PHP

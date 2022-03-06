@@ -1,3 +1,1 @@
-export type LangDefinition = {
-    
-}
+export type LangDefinition = {};
