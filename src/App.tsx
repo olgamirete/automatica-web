@@ -15,9 +15,7 @@ import LangContext, { availableLanguages } from "contexts/LangContext";
 import useLanguage from "hooks/useLanguage";
 import React, { Fragment, ReactElement } from "react";
 
-// For internationalization, try and get the prefered language from the system.
-// Also show option to change the language. If the language is changed, store
-// the new setting with the localStorage api.
+// For internationalization, try to get the prefered language from the system.
 
 interface Section {
   path: String;
