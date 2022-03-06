@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react'
 import { Nav, Navbar, NavbarProps } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AutomaticaLogo from 'assets/svg/logo.svg'
@@ -9,7 +9,7 @@ import LanguageSelector from 'components/LanguageSelector'
 export interface NavBarAutomaticaProps extends NavbarProps {
   cameraFunctions: any
   location: any
-  setLanguage: () => void
+  setLanguage: Dispatch<SetStateAction<string>>
 }
 
 const NavBarAutomatica: React.FC<NavBarAutomaticaProps> = ({
