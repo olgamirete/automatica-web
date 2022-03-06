@@ -1,4 +1,3 @@
-import { Col, Container, Row } from 'react-bootstrap'
 import BackgroundJS from 'components/BackgroundJS'
 import NavBarAutomatica from 'components/NavBarAutomatica'
 import useCameraParams from 'hooks/useCameraParams'
@@ -50,9 +49,9 @@ const App: React.FC = () => {
           setLanguage={setLanguage}
         />
 
-        <Container fluid>
-          <Col id="content-container">
-            <Row>
+        <div className='container-fluid'>
+          <div className="col" id="content-container">
+            <div className="row">
               <SwitchTransition mode="out-in">
                 <CSSTransition
                   key={helpers.functions.getSectionKeyFromPath(
@@ -85,9 +84,9 @@ const App: React.FC = () => {
                   </Routes>
                 </CSSTransition>
               </SwitchTransition>
-            </Row>
-          </Col>
-        </Container>
+            </div>
+          </div>
+        </div>
       </div>
     </LangContext.Provider>
   )
