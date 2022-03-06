@@ -91,12 +91,12 @@ const es: Record<string, string | ReactElement> = {
   it_looks_like_this_page_does_not_exist: (
     <>
       Parece que esta página no existe. ¡No te preocupes! Puedes ir al{" "}
-      <Link to="/" className="fw-bold">
+      <Link to="/" className="fw-bold link-warning">
         inicio
       </Link>{" "}
       para ver si encuentras lo que buscabas, o escribirnos a través de la
       sección de{" "}
-      <Link to="/contact" className="fw-bold">
+      <Link to="/contact" className="fw-bold link-info">
         contacto
       </Link>
       , para que podamos ayudarte.

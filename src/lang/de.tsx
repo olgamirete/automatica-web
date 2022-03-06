@@ -90,12 +90,12 @@ const de = {
     <>
       Diese Seite scheint nicht zu exisieren. Machen Sie keine Sorge! Sie können
       wieder zum{" "}
-      <Link to="/" className="fw-bold">
+      <Link to="/" className="fw-bold link-warning">
         Anfang
       </Link>{" "}
       gehen, um zu schauen ob Sie dort das finden, was Sie gesucht hatten. Sie
       können auch uns direkt eine Nachricht schicken durch den Formular auf der{" "}
-      <Link to="/contact" className="fw-bold">
+      <Link to="/contact" className="fw-bold link-info">
         Kontakt
       </Link>{" "}
       Seite, damit wir Ihnen helfen können.

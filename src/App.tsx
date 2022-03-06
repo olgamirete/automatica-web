@@ -80,7 +80,7 @@ const App: React.FC = () => {
                         ))}
                       </Fragment>
                     ))}
-                    <Route element={<NotFound />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </CSSTransition>
               </SwitchTransition>
