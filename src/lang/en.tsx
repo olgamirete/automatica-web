@@ -21,12 +21,12 @@ const en = {
     <p className="lead text-center">
       Our <span className="text-warning fw-bold">goal</span> is to help
       companies{' '}
-      <span className="text-info fw-bold">automate some of their work</span>, so
+      <span className="text-info fw-bold">automate their work</span>, so
       that they don't have to lose time doing things that don't add value.
     </p>
   ),
-  how_to_know_if_we_can_help: 'Check out our portfolio!',
-  showcase: 'Showcase',
+  how_to_know_if_we_can_help: 'Check out our services!',
+  showcase: 'Services',
   showcase_1: (
     <>
       Consulting on automation and{' '}
