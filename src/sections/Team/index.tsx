@@ -19,7 +19,7 @@ const Team: React.FC = () => {
           subtitle={lang.project_leader}
           urlLinkedIn="https://www.linkedin.com/in/fgiancarelli/"
           urlGitHub="https://github.com/omirete/"
-          // urlWebsite="https://federicogiancarelli.com/"
+          urlWebsite="https://federicogiancarelli.com/"
         />
         <MemberCard
           picSrc={picJulieta}
