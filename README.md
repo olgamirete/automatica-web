@@ -1,12 +1,14 @@
-# Source for Automatica website / Fuente de la web Automatica
+# automaticaconsultora.com
+## Source code
 
-`EN`: We are strong believers of open source software, and that's why we provide full source files for our site. If at least one person is able to get something out of it, then we will already feel awesome.
+`EN`: We are strong believers of open source and that's why we provide full source files for our site. Feel free to take code/ideas from here for your own projects.
 
-`ES`: Creemos fervientemente en el código libre, y por eso publicamos la fuente completa de nuestro sitio web. Si le resulta útil a, al menos, una persona, nosotros ya nos sentiremos geniales.
+`ES`: Creemos fervientemente en el código libre y por eso publicamos la fuente completa de nuestro sitio web. Siéntete libre de tomar ideas/código de aquí para tus propios proyectos.
 
 ## Technologies used / Tecnologías utilizadas
 
+- TypeScript
 - ReactJS
-- Bootstrap
+- Bootstrap (css only)
 - ThreeJS
 - PHP
