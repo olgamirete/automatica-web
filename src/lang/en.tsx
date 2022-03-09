@@ -10,7 +10,7 @@ const en = {
   home_text: (
     <p className="text-light lead text-center">
       There is a <span className="text-warning fw-bold">simpler</span> way of
-      doing the things that take your time, and at{' '}
+      doing the things that take you time, and at{' '}
       <span className="text-info fw-bold">Automatica</span> we will help you
       find it.
     </p>
