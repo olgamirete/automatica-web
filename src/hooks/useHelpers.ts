@@ -1,51 +1,69 @@
 import LangContext from "contexts/LangContext";
 import { useCallback, useContext, useMemo } from "react";
+import { Vector3 } from "three";
 
-function useHelpers() {
+export interface NavLinkInfo {
+  link: string;
+  text: string;
+  eventKey: string;
+  moveCamTo: Vector3;
+  showInNavbar: boolean;
+}
+
+export interface Helpers {
+  constants: {
+    navLinks: NavLinkInfo[];
+  };
+  functions: {
+    getSectionKeyFromPath: (path: string) => string;
+  };
+}
+
+function useHelpers(): Helpers {
   const lang = useContext(LangContext);
 
-  const navLinks = useMemo(
+  const navLinks = useMemo<NavLinkInfo[]>(
     () => [
       {
         link: "/",
-        text: lang.home,
+        text: lang.strings.home,
         eventKey: "home",
-        moveCamTo: [30, 30, 15],
+        moveCamTo: new Vector3(30, 30, 15),
         showInNavbar: true,
       },
       {
         link: "/about",
-        text: lang.about,
+        text: lang.strings.about,
         eventKey: "about",
-        moveCamTo: [3, 12, 18],
+        moveCamTo: new Vector3(3, 12, 18),
         showInNavbar: true,
       },
       {
         link: "/showcase",
-        text: lang.showcase,
+        text: lang.strings.showcase,
         eventKey: "showcase",
-        moveCamTo: [20, -40, -70],
+        moveCamTo: new Vector3(20, -40, -70),
         showInNavbar: true,
       },
       {
         link: "/contact",
-        text: lang.contact,
+        text: lang.strings.contact,
         eventKey: "contact",
-        moveCamTo: [60, 20, -20],
+        moveCamTo: new Vector3(60, 20, -20),
         showInNavbar: true,
       },
       {
         link: "/team",
-        text: lang.team,
+        text: lang.strings.team,
         eventKey: "team",
-        moveCamTo: [90, 15, -5],
+        moveCamTo: new Vector3(90, 15, -5),
         showInNavbar: true,
       },
       {
         link: "/notfound",
-        text: lang.not_found,
+        text: lang.strings.not_found,
         eventKey: "notfound",
-        moveCamTo: [30, 10, -15],
+        moveCamTo: new Vector3(30, 10, -15),
         showInNavbar: false,
       },
     ],
@@ -53,7 +71,7 @@ function useHelpers() {
   );
 
   const getSectionKeyFromPath = useCallback(
-    (path) => {
+    (path: string) => {
       let aux = path + "/";
       aux = aux.substring(1);
       aux = aux.substring(0, aux.search("/"));
@@ -66,23 +84,12 @@ function useHelpers() {
     [navLinks]
   );
 
-  const mainAppId = "main-app";
-
-  const scrollToTop = useCallback(() => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    const elem = document.getElementById(mainAppId);
-    elem.scrollTop = 0;
-  }, []);
-
   return {
     constants: {
       navLinks: navLinks,
-      mainAppId: mainAppId,
     },
     functions: {
       getSectionKeyFromPath: getSectionKeyFromPath,
-      scrollToTop: scrollToTop,
     },
   };
 }

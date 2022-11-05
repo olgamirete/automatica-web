@@ -13,7 +13,8 @@ import useHelpers from "hooks/useHelpers";
 import NotFound from "sections/NotFound";
 import LangContext, { availableLanguages } from "contexts/LangContext";
 import useLanguage from "hooks/useLanguage";
-import React, { Fragment, ReactElement } from "react";
+import React, { Fragment, ReactElement, useRef } from "react";
+import useScrollToTop from "hooks/useScrollToTop";
 
 // For internationalization, try to get the prefered language from the system.
 
@@ -24,6 +25,8 @@ interface Section {
 
 const App: React.FC = () => {
   const [language, setLanguage] = useLanguage();
+  const appRef = useRef<HTMLDivElement>(null);
+  const scrollToTop = useScrollToTop(appRef);
 
   let location = useLocation();
   const helpers = useHelpers();
@@ -39,7 +42,7 @@ const App: React.FC = () => {
 
   return (
     <LangContext.Provider value={language}>
-      <div id={helpers.constants.mainAppId} className="vh-100 overflow-auto">
+      <div ref={appRef} className="vh-100 overflow-auto">
         <BackgroundJS cameraParams={cameraParams} />
         <NavBarAutomatica
           cameraFunctions={cameraFunctions}
@@ -56,7 +59,7 @@ const App: React.FC = () => {
                     location.pathname
                   )}
                   classNames="fade"
-                  onExited={helpers.functions.scrollToTop}
+                  onExited={scrollToTop}
                   timeout={300}
                 >
                   <Routes location={location}>

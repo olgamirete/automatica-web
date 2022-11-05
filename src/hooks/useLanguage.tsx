@@ -19,7 +19,6 @@ const useLanguage = (): [
 
   useEffect(() => {
     const possibleLangCode = pathname.split("/")[1];
-    console.log(possibleLangCode);
     if (
       availableLanguages.find((avLang) => avLang._code === possibleLangCode)
     ) {

@@ -3,17 +3,22 @@ import { Form } from "react-bootstrap";
 import CustomFormInput from "components/CustomForm/CustomFormInput";
 import CustomSubmitButton from "components/CustomForm/CustomSubmitButton";
 import LangContext from "contexts/LangContext";
+import CustomTextAreaInput from "components/CustomForm/CustomTextAreaInput";
+import { FormStatus } from "types/forms";
 
-function ContactForm(props) {
+export interface ContactFormProps {
+  messageStatus: FormStatus;
+  setMessageStatus: (status: FormStatus) => void;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({messageStatus, setMessageStatus}) => {
   const formRef = useRef(null);
 
-  const status = props.statusDefs;
-
-  const handleSubmit = (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     // Prevent form submit
     e.preventDefault();
 
-    props.setMessageStatus(status.SENDING);
+    setMessageStatus("sending");
 
     // Get form data
     const form = e.currentTarget;
@@ -30,62 +35,60 @@ function ContactForm(props) {
       })
       .then(function (text) {
         // console.log(text);
-        props.setMessageStatus(status.SENT);
+        setMessageStatus("sent");
       })
       .catch(function (error) {
         console.log(error);
-        props.setMessageStatus(status.ERROR);
+        setMessageStatus("error");
       });
 
     // Prevent html form submit
     return false;
   };
 
-  const inputFieldClasses = "bg-light text-muted";
+  const inputFieldClasses = "bg-light py-2";
   const lang = useContext(LangContext);
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmit}>
+    <Form ref={formRef} onSubmit={handleSubmit} className="px-2">
       <CustomFormInput
         required
-        type="name"
+        type="text"
         name="name"
-        placeholder={lang.enter_your_name}
-        label={lang.name}
+        placeholder={lang.strings.enter_your_name}
+        label={lang.strings.name}
         className={inputFieldClasses}
       />
       <CustomFormInput
         required
-        type="company"
+        type="text"
         name="company"
-        placeholder={lang.enter_your_company}
-        label={lang.company}
+        placeholder={lang.strings.enter_your_company}
+        label={lang.strings.company}
         className={inputFieldClasses}
       />
       <CustomFormInput
         required
         type="email"
         name="email"
-        placeholder={lang.enter_your_email_address}
-        label={lang.email}
+        placeholder={lang.strings.enter_your_email_address}
+        label={lang.strings.email}
         className={inputFieldClasses}
       />
-      <CustomFormInput
+      <CustomTextAreaInput
         required
-        type="text"
         name="message"
-        placeholder={lang.tell_us_why_you_write}
-        label={lang.message}
-        as="textarea"
+        placeholder={lang.strings.tell_us_why_you_write}
+        label={lang.strings.message}
         className={inputFieldClasses}
       />
       <CustomSubmitButton
         variant="dark"
-        flagSending={props.messageStatus === status.SENDING}
+        sending={messageStatus === "sending"}
         borderColor="light"
       />
     </Form>
   );
-}
+};
 
 export default ContactForm;

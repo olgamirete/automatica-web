@@ -4,7 +4,23 @@ import { ReactComponent as IconLinkedIn } from "assets/icons/linkedin.svg";
 import { ReactComponent as IconGitHub } from "assets/icons/github.svg";
 import { ReactComponent as IconWebsite } from "assets/icons/website.svg";
 
-function MemberCard(props) {
+export interface MemberCardProps {
+  picSrc: string;
+  name: string;
+  subtitle: string;
+  urlLinkedIn?: string;
+  urlGitHub?: string;
+  urlWebsite?: string;
+}
+
+const MemberCard: React.FC<MemberCardProps> = ({
+  picSrc,
+  name,
+  subtitle,
+  urlLinkedIn,
+  urlGitHub,
+  urlWebsite,
+}) => {
   return (
     <Col className="mb-4">
       <Card className="bg-transparent border-0 text-light">
@@ -15,20 +31,20 @@ function MemberCard(props) {
           >
             <Card.Img
               variant="top"
-              src={props.picSrc}
+              src={picSrc}
               className="rounded rounded-circle max-height-profile-pic"
             />
           </Col>
           <Col className="ps-0">
             <Card.Body className="ps-0">
-              <Card.Title className="mb-0">{props.name}</Card.Title>
+              <Card.Title className="mb-0">{name}</Card.Title>
               <Card.Text className="fw-light text-nowrap mb-1">
-                {props.subtitle}
+                {subtitle}
               </Card.Text>
               <Card.Text>
-                {props.urlLinkedIn && (
+                {urlLinkedIn && (
                   <a
-                    href={props.urlLinkedIn}
+                    href={urlLinkedIn}
                     target="_blank"
                     rel="noreferrer"
                     className="icon-social-team"
@@ -36,9 +52,9 @@ function MemberCard(props) {
                     <IconLinkedIn />
                   </a>
                 )}
-                {props.urlGitHub && (
+                {urlGitHub && (
                   <a
-                    href={props.urlGitHub}
+                    href={urlGitHub}
                     target="_blank"
                     rel="noreferrer"
                     className="icon-social-team"
@@ -46,9 +62,9 @@ function MemberCard(props) {
                     <IconGitHub />
                   </a>
                 )}
-                {props.urlWebsite && (
+                {urlWebsite && (
                   <a
-                    href={props.urlWebsite}
+                    href={urlWebsite}
                     target="_blank"
                     rel="noreferrer"
                     className="icon-social-team"
@@ -63,6 +79,6 @@ function MemberCard(props) {
       </Card>
     </Col>
   );
-}
+};
 
 export default MemberCard;

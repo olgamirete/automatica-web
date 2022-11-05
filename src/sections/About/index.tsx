@@ -1,27 +1,24 @@
 import InfoCard from "components/InfoCard";
-import { Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import LangContext from "contexts/LangContext";
 
-function About(props) {
+const About: React.FC = () => {
   const lang = useContext(LangContext);
 
   return (
     <InfoCard className="bg-dark text-light border border-light">
-      <h1 className="mb-4 text-center">{lang.about}</h1>
-      {lang.about_text}
+      <h1 className="mb-4 text-center">{lang.strings.about}</h1>
+      {lang.elements.about_text}
       <Row>
         <Col className="text-center">
-          <Button
-            variant="dark"
-            className="mt-3 border border-light"
-            href="/showcase"
+          <Link
+            className="btn btn-dark mt-3 border border-light"
             to="/showcase"
-            as={Link}
           >
-            {lang.how_to_know_if_we_can_help}
-          </Button>
+            {lang.strings.how_to_know_if_we_can_help}
+          </Link>
         </Col>
       </Row>
       {/* <h1 className="mb-4 mt-4 text-center">Nuestra <span className="">misión</span>:</h1>
@@ -36,6 +33,6 @@ function About(props) {
             </p> */}
     </InfoCard>
   );
-}
+};
 
 export default About;

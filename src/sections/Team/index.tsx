@@ -11,12 +11,12 @@ const Team: React.FC = () => {
   const lang = useContext(LangContext);
   return (
     <InfoCard className="bg-dark text-light border border-light">
-      <h1 className="text-light mb-4 text-center">{lang.our_team}</h1>
+      <h1 className="text-light mb-4 text-center">{lang.strings.our_team}</h1>
       <Row xs={1} sm={2} className="d-flex justify-content-center">
         <MemberCard
           picSrc={picFederico}
           name="Federico"
-          subtitle={lang.project_leader}
+          subtitle={lang.strings.project_leader}
           urlLinkedIn="https://www.linkedin.com/in/fgiancarelli/"
           urlGitHub="https://github.com/omirete/"
           urlWebsite="https://federicogiancarelli.com/"
@@ -24,14 +24,14 @@ const Team: React.FC = () => {
         <MemberCard
           picSrc={picJulieta}
           name="Julieta"
-          subtitle={lang.marketing}
+          subtitle={lang.strings.marketing}
           urlLinkedIn="https://www.linkedin.com/in/julietamo/"
           urlWebsite="https://julietamorales.com/"
         />
         <MemberCard
           picSrc={picFrancisco}
           name="Francisco"
-          subtitle={lang.tech_leader}
+          subtitle={lang.strings.tech_leader}
           urlLinkedIn="https://www.linkedin.com/in/giancarellifrancisco/"
           urlGitHub="https://github.com/padapada09/"
         />

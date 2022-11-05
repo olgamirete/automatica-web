@@ -5,47 +5,43 @@ import { SwitchTransition, CSSTransition } from "react-transition-group";
 import SocialFooter from "./SocialFooter";
 import "./index.css";
 import LangContext from "contexts/LangContext";
+import { FormStatus } from "types/forms";
 
-const status = {
-  NULL: "null",
-  SENDING: "sending",
-  SENT: "msgsent",
-  ERROR: "error",
+export interface ContactProps {}
+
+const AlertMessage: React.FC<{ status: FormStatus }> = ({ status }) => {
+  const lang = useContext(LangContext);
+  switch (status) {
+    case "sent":
+      return (
+        <div role="alert" className="mt-3 alert alert-light">
+          {lang.strings.message_sent_success}
+        </div>
+      );
+    case "error":
+      return (
+        <div role="alert" className="mt-3 alert alert-danger">
+          {lang.strings.message_sent_error}
+        </div>
+      );
+    default:
+      return null;
+  }
 };
 
-function Contact(props) {
-  const [messageStatus, setMessageStatus] = useState(status.NULL);
+const Contact = () => {
+  const [messageStatus, setMessageStatus] = useState<FormStatus>("null");
   const lang = useContext(LangContext);
-
-  function AlertMessage(props) {
-    switch (props.messageStatus) {
-      case status.SENT:
-        return (
-          <div role="alert" class="mt-3 alert alert-light">
-            {lang.message_sent_success}
-          </div>
-        );
-      case status.ERROR:
-        return (
-          <div role="alert" class="mt-3 alert alert-danger">
-            {lang.message_sent_error}
-          </div>
-        );
-      default:
-        return null;
-    }
-  }
 
   return (
     <InfoCard className="bg-dark text-light border border-light">
-      <h1 className="text-light mb-4 text-center">{lang.contact_us}</h1>
+      <h1 className="text-light mb-4 text-center">{lang.strings.contact_us}</h1>
       <div className="container-fluid">
         <p className="text-light lead text-center">
-          {lang.we_love_to_hear_from_you}
+          {lang.strings.we_love_to_hear_from_you}
         </p>
-        {messageStatus !== status.SENT && (
+        {messageStatus !== "sent" && (
           <ContactForm
-            statusDefs={status}
             messageStatus={messageStatus}
             setMessageStatus={setMessageStatus}
           />
@@ -57,16 +53,16 @@ function Contact(props) {
             // onExited={() => false}
             timeout={300}
           >
-            <AlertMessage messageStatus={messageStatus} />
+            <AlertMessage status={messageStatus} />
           </CSSTransition>
         </SwitchTransition>
       </div>
       <p className="text-light text-center mt-3 small">
-        {lang.if_you_prefer_use_other_contact_channels}
+        {lang.strings.if_you_prefer_use_other_contact_channels}
       </p>
       <SocialFooter />
     </InfoCard>
   );
-}
+};
 
 export default Contact;
