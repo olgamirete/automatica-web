@@ -6,8 +6,13 @@ import usePointerCoords from "hooks/usePointerCoords";
 import { Vector3 } from "three";
 
 // With help from: https://codesandbox.io/s/eager-noyce-6rvwr?from-embed=&file=/src/index.js:753-776
+export interface DotFieldState {
+  positions: Float32Array;
+  colors: Float32Array;
+  sizes: Float32Array;
+}
 
-var getHeight = function (x: number, y: number, t: number): number {
+const getHeight = (x: number, y: number, t: number): number => {
   // const offsetX = 2000;
   // const offsetY = -100;
 
@@ -29,68 +34,62 @@ var getHeight = function (x: number, y: number, t: number): number {
   t = t / 30;
 
   // const fa = r < 50 ? 0 : 1;
-  // const fa = r < 50 ? Math.sin(r*(Math.PI/2)/50) : 1;
-  const fa = 1;
-  // return Math.sin((r+t)/(10*Math.PI))*5000*(1/r);
-  // return (Math.sin((r+t)/(5*2*Math.PI))+0)*50*(1/r);
-  return (
-    fa *
-    (Math.sin((angle + t / 12) * 5 + (r * 2 * Math.PI) / 100) *
-      2 *
-      Math.sin((r * 2 * Math.PI) / 100 + t / 2))
-  );
+  // const fa = 1;
+  // return Math.exp(Math.sin(r/10+t/2)*3)/10;
+  return Math.sin((angle + t / 12) * 5 + (r * 2 * Math.PI) / 100) * 2 * Math.sin((r * 2 * Math.PI) / 100 + t / 2);
   // return Math.sin((r+t)/(5*2*Math.PI))*500*Math.sqrt(1/(r+1));
-  // return Math.sin((x+t)/(5*2*Math.PI))*50 + Math.sin((y-t)/(5*2*Math.PI))*50;
+  // return Math.sin((x/2+t*5)/(5*2*Math.PI)) - Math.cos((y/2-t*5)/(5*2*Math.PI));
 
-  // return Math.sin((r+t)/(5*2*Math.PI))*50*Math.sin(angle*5+(t+r/1.5)/100); //Fav
-
-  // return fa * ( Math.sin((r + t) / (5 * 2 * Math.PI)) * 50 * Math.sin(angle * 5 + (t + r / 1.5) / 100) / scale); //Fav
+  // return Math.sin((r+t*4)/(5*2*Math.PI))*Math.sin(angle*5+(t*3+r/1.5)/100)*3; //Fav
 };
-
-let auxPositionsArr: number[] = [];
-let colorsArr: number[] = [];
-let sizesArr: number[] = [];
-
-const maxAngle = 359;
-const maxRadius = 150;
-const stepRadius = 2;
-const stepAngle = 1;
-
-for (let i = 0; i <= maxAngle / stepAngle; i++) {
-  for (let j = 0; j <= maxRadius / stepRadius; j++) {
-    // let x = i * stepAngle * (100+(Math.random()-.5)*2*1)/100;
-    // let z = j * stepAngle * (100+(Math.random()-.5)*2*1)/100;
-    let x = Math.cos(i * stepAngle * ((2 * Math.PI) / 180)) * j * stepRadius;
-    let z = Math.sin(i * stepAngle * ((2 * Math.PI) / 180)) * j * stepRadius;
-    let y = getHeight(x, z, 0);
-
-    // var newColor = new THREE.Color(0x00b8ff);
-    const newColor = new THREE.Color(0xaaaaaa);
-    // const newColor = new THREE.Color(0xff0000);
-
-    if (Math.random() * 150 > j * stepRadius || j * stepRadius < 20) {
-      auxPositionsArr.push(x, y, z);
-      colorsArr.push(newColor.r, newColor.g, newColor.b);
-      sizesArr.push(Math.random() * 5);
-    }
-  }
-}
-
-let auxPositions = new Float32Array(auxPositionsArr);
-let colors = new Float32Array(colorsArr);
-let sizes = new Float32Array(sizesArr);
 
 const DotField: React.FC = () => {
   const pointsRef = useRef(null); //<ThreeElements.points>
+  const startTime = useMemo(() => new Date().getTime() * 0.001, []);
+
+  const dotFieldInitialState = useMemo<DotFieldState>(() => {
+    let auxPositionsArr: number[] = [];
+    let colorsArr: number[] = [];
+    let sizesArr: number[] = [];
+
+    const maxAngle = 359;
+    const maxRadius = 150;
+    const stepRadius = 2;
+    const stepAngle = 1;
+
+    for (let i = 0; i <= maxAngle / stepAngle; i++) {
+      for (let j = 0; j <= maxRadius / stepRadius; j++) {
+        // let x = i * stepAngle * (100+(Math.random()-.5)*2*1)/100;
+        // let z = j * stepAngle * (100+(Math.random()-.5)*2*1)/100;
+        let x = Math.cos(i * stepAngle * (Math.PI / 90)) * j * stepRadius;
+        let z = Math.sin(i * stepAngle * (Math.PI / 90)) * j * stepRadius + x;
+        let y = getHeight(x, z, 0);
+
+        const newColor = new THREE.Color(0xaaaaaa);
+
+        if (Math.random() * 150 > j * stepRadius || j * stepRadius < 20) {
+          auxPositionsArr.push(x, y, z);
+          colorsArr.push(newColor.r, newColor.g, newColor.b);
+          sizesArr.push(Math.random() * 5);
+        }
+      }
+    }
+
+    return {
+      positions: new Float32Array(auxPositionsArr),
+      colors: new Float32Array(colorsArr),
+      sizes: new Float32Array(sizesArr),
+    };
+  }, []);
 
   const pointerCoords = usePointerCoords();
 
-  const startTime = useMemo(() => new Date().getTime() * 0.001, []);
-
   useFrame((state, delta) => {
+    const currentTime = new Date().getTime() * 0.001;
+    const elapsedTime = currentTime - startTime;
+
     if (pointsRef.current) {
-      const currentTime = new Date().getTime() * 0.001;
-      const elapsedTime = currentTime - startTime;
+      let points = pointsRef.current as ThreeElements["points"];
 
       // --------------
       const vec = new Vector3(
@@ -109,8 +108,6 @@ const DotField: React.FC = () => {
         .add(vec.multiplyScalar(distance));
       const pointerPos2D = new Vector3(pointerPos.x, 0, pointerPos.z);
       // --------------
-
-      let points = pointsRef.current as ThreeElements["points"];
 
       if (points.geometry) {
         points.geometry.attributes.position.needsUpdate = true;
@@ -151,9 +148,9 @@ const DotField: React.FC = () => {
   return (
     <Points
       ref={pointsRef}
-      positions={auxPositions}
-      colors={colors}
-      sizes={sizes}
+      positions={dotFieldInitialState.positions}
+      colors={dotFieldInitialState.colors}
+      sizes={dotFieldInitialState.sizes}
     >
       <pointsMaterial
         attach="material"
