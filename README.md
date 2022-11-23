@@ -1,4 +1,4 @@
-# automaticaconsultora.com
+# automatica.com.ar
 ## Why make the source code available?
 
 `EN`: We are strong believers of open source and that's why we provide full source files for our site. Feel free to take code/ideas from here for your own projects.
