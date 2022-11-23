@@ -26,7 +26,7 @@ const ContactForm: React.FC<ContactFormProps> = ({messageStatus, setMessageStatu
     const formDataObj = Object.fromEntries(formData.entries());
 
     // Send data using the fetch api
-    fetch("https://automaticaconsultora.com/send_contact_email.php", {
+    fetch("https://automatica.com.ar/send_contact_email.php", {
       method: "post",
       body: JSON.stringify(formDataObj),
     })
