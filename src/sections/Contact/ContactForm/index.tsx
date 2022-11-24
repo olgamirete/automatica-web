@@ -11,7 +11,7 @@ export interface ContactFormProps {
   setMessageStatus: (status: FormStatus) => void;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({messageStatus, setMessageStatus}) => {
+const ContactForm: React.FC<ContactFormProps> = ({ messageStatus, setMessageStatus }) => {
   const formRef = useRef(null);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -23,6 +23,13 @@ const ContactForm: React.FC<ContactFormProps> = ({messageStatus, setMessageStatu
     // Get form data
     const form = e.currentTarget;
     const formData = new FormData(form);
+    formData.set('date', (new Date()).toLocaleDateString(undefined, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }));
+
     const formDataObj = Object.fromEntries(formData.entries());
 
     // Send data using the fetch api
@@ -51,14 +58,26 @@ const ContactForm: React.FC<ContactFormProps> = ({messageStatus, setMessageStatu
 
   return (
     <Form ref={formRef} onSubmit={handleSubmit} className="px-2">
-      <CustomFormInput
-        required
-        type="text"
-        name="name"
-        placeholder={lang.strings.enter_your_name}
-        label={lang.strings.name}
-        className={inputFieldClasses}
-      />
+      <div className="row gx-2">
+        <CustomFormInput
+          required
+          type="text"
+          name="first_name"
+          placeholder={lang.strings.enter_your_first_name}
+          label={lang.strings.first_name}
+          className={inputFieldClasses}
+          containerClassName="col-12 col-sm-6"
+        />
+        <CustomFormInput
+          required
+          type="text"
+          name="last_name"
+          placeholder={lang.strings.enter_your_last_name}
+          label={lang.strings.last_name}
+          className={inputFieldClasses}
+          containerClassName="col-12 col-sm-6"
+        />
+      </div>
       <CustomFormInput
         required
         type="text"
