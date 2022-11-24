@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Form } from "react-bootstrap";
 import CustomFormInput from "components/CustomForm/CustomFormInput";
 import CustomSubmitButton from "components/CustomForm/CustomSubmitButton";
@@ -13,8 +13,9 @@ export interface ContactFormProps {
 
 const ContactForm: React.FC<ContactFormProps> = ({ messageStatus, setMessageStatus }) => {
   const formRef = useRef(null);
+  const lang = useContext(LangContext);
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback((e) => {
     // Prevent form submit
     e.preventDefault();
 
@@ -23,24 +24,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ messageStatus, setMessageStat
     // Get form data
     const form = e.currentTarget;
     const formData = new FormData(form);
-    formData.set('date', (new Date()).toLocaleDateString(undefined, {
+    formData.set('date', (new Date()).toLocaleDateString(lang._locale, {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     }));
+    formData.set('locale', lang._locale?.toString() ?? 'en-UK');
 
-    const formDataObj = Object.fromEntries(formData.entries());
+    const data = new URLSearchParams();
+    formData.forEach((value, key) => {
+      data.append(key, value.toString());
+    });
 
     // Send data using the fetch api
     fetch("https://automatica.com.ar/send_contact_email.php", {
       method: "post",
-      body: JSON.stringify(formDataObj),
+      body: data,
     })
       .then(function (response) {
         return response.text();
       })
-      .then(function (text) {
+      .then(function (text: string) {
         // console.log(text);
         setMessageStatus("sent");
       })
@@ -51,11 +56,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ messageStatus, setMessageStat
 
     // Prevent html form submit
     return false;
-  };
+  }, [lang, setMessageStatus]);
 
   const inputFieldClasses = "bg-light py-2";
-  const lang = useContext(LangContext);
-
+  
   return (
     <Form ref={formRef} onSubmit={handleSubmit} className="px-2">
       <div className="row gx-2">

@@ -6,6 +6,7 @@ const de: LanguageData = {
   _code: "de",
   _name: "Deutsch",
   _flag: <IconFlag className="d-block" style={{ width: "1em" }} />,
+  _locale: "de-DE",
   strings: {
     automatica: "Automatica",
     home: "Home",
@@ -40,7 +41,7 @@ const de: LanguageData = {
     tech_leader: "Technologieleiter",
     not_found: "Nicht gefunden",
     message_sent_success:
-      "Ihre Nachricht wurde geschickt! Wir werden Ihnen automatisch eine Bestätigungsemail schicken.",
+      "Ihre Nachricht wurde geschickt! Wir schicken Ihnen eine Bestätigungsemail, damit Sie wissen wir haben es erfolgreich bekommen.",
     message_sent_error:
       "Es ist ein Fehler beim Senden aufgetaucht. Bitte versuchen Sie es später erneut, oder verwenden sie eine unseren anderen Kanälen.",
   },

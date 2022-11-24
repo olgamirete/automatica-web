@@ -6,6 +6,7 @@ const en: LanguageData = {
   _code: "en",
   _name: "English",
   _flag: <IconFlag className="d-block" style={{ width: "1em" }} />,
+  _locale: "en-UK",
   strings: {
     automatica: "Automatica",
     home: "Home",
@@ -42,9 +43,9 @@ const en: LanguageData = {
     tech_leader: "Tech leader",
     not_found: "Not found",
     message_sent_success:
-      "¡Tu mensaje ha sido enviado! Te enviaremos una respuesta por correo para confirmarte que lo hemos recibido correctamente.",
+      "¡Your message has been sent! We will send you a copy per email so you are sure we have received it correctly.",
     message_sent_error:
-      "Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo más tarde, o utiliza alguno de nuestros canales alternativos.",
+      "There was an error while sending your message. Please try again later, or use one of our alternative channels.",
   },
   elements: {
     home_text: (

@@ -6,6 +6,7 @@ const es: LanguageData = {
   _code: "es",
   _name: "Español",
   _flag: <IconFlag className="d-block" style={{ width: "1em" }} />,
+  _locale: "es-ES",
   strings: {
     automatica: "Automatica",
     home: "Inicio",
@@ -41,7 +42,7 @@ const es: LanguageData = {
     tech_leader: "Líder técnico",
     not_found: "No encontrado",
     message_sent_success:
-      "¡Tu mensaje ha sido enviado! Te enviaremos una respuesta por correo para confirmarte que lo hemos recibido correctamente.",
+      "¡Tu mensaje ha sido enviado! Te enviaremos una copia por correo para confirmarte que lo hemos recibido correctamente.",
     message_sent_error:
       "Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo más tarde, o utiliza alguno de nuestros canales alternativos.",
   },
