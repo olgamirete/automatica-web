@@ -36,7 +36,11 @@ const getHeight = (x: number, y: number, t: number): number => {
   // const fa = r < 50 ? 0 : 1;
   // const fa = 1;
   // return Math.exp(Math.sin(r/10+t/2)*3)/10;
-  return Math.sin((angle + t / 12) * 5 + (r * 2 * Math.PI) / 100) * 2 * Math.sin((r * 2 * Math.PI) / 100 + t / 2);
+  return (
+    Math.sin((angle + t / 12) * 5 + (r * 2 * Math.PI) / 100) *
+    2 *
+    Math.sin((r * 2 * Math.PI) / 100 + t / 2)
+  );
   // return Math.sin((r+t)/(5*2*Math.PI))*500*Math.sqrt(1/(r+1));
   // return Math.sin((x/2+t*5)/(5*2*Math.PI)) - Math.cos((y/2-t*5)/(5*2*Math.PI));
 

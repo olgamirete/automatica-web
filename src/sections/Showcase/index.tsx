@@ -15,11 +15,23 @@ const Showcase: React.FC = () => {
   const iconStyles: CSSProperties = { width: "2.5em", fill: "#ffffff" };
 
   const ShowcaseContents = [
-    { icon: <IconBrainChip style={iconStyles} />, text: lang.elements.showcase_1 },
-    { icon: <IconDashboard style={iconStyles} />, text: lang.elements.showcase_2 },
-    { icon: <IconCertificate style={iconStyles} />, text: lang.elements.showcase_3 },
+    {
+      icon: <IconBrainChip style={iconStyles} />,
+      text: lang.elements.showcase_1,
+    },
+    {
+      icon: <IconDashboard style={iconStyles} />,
+      text: lang.elements.showcase_2,
+    },
+    {
+      icon: <IconCertificate style={iconStyles} />,
+      text: lang.elements.showcase_3,
+    },
     { icon: <IconRobot style={iconStyles} />, text: lang.elements.showcase_4 },
-    { icon: <IconLightning style={iconStyles} />, text: lang.elements.showcase_5 },
+    {
+      icon: <IconLightning style={iconStyles} />,
+      text: lang.elements.showcase_5,
+    },
   ];
 
   return (
