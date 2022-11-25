@@ -26,7 +26,7 @@ const CustomSubmitButton: React.FC<CustomSubmitButtonProps> = ({
     <button
       type="submit"
       className={`
-        d-flex align-items-center justify-content-center mt-4 w-100
+        d-flex align-items-center justify-content-center
         btn btn-${variant ?? "primary"}
         ${borderClass}
         ${className}

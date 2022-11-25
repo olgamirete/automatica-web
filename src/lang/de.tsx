@@ -44,6 +44,7 @@ const de: LanguageData = {
       "Ihre Nachricht wurde geschickt! Wir schicken Ihnen eine Bestätigungsemail, damit Sie wissen wir haben es erfolgreich bekommen.",
     message_sent_error:
       "Es ist ein Fehler beim Senden aufgetaucht. Bitte versuchen Sie es später erneut, oder verwenden sie eine unseren anderen Kanälen.",
+    please_complete_captcha: "Bitte Captcha validieren.",
   },
   elements: {
     home_text: (

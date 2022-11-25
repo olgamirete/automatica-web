@@ -46,6 +46,7 @@ const en: LanguageData = {
       "¡Your message has been sent! We will send you a copy per email so you are sure we have received it correctly.",
     message_sent_error:
       "There was an error while sending your message. Please try again later, or use one of our alternative channels.",
+    please_complete_captcha: "Please complete the captcha.",
   },
   elements: {
     home_text: (
