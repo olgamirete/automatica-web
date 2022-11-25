@@ -25,7 +25,7 @@ const en: LanguageData = {
     last_name: "Last name",
     company: "Company",
     email: "E-Mail",
-    message: "Mensaje",
+    message: "Message",
     enter_your_name: "Enter your name",
     enter_your_first_name: "Enter your first name",
     enter_your_last_name: "Enter your last name",

@@ -16,7 +16,6 @@ const ContactForm: React.FC = () => {
     setLoadingCaptcha,
   } = useContactForm();
   const lang = useContext(LangContext);
-  const inputFieldClasses = "bg-light py-2";
 
   return (
     <>
@@ -28,8 +27,9 @@ const ContactForm: React.FC = () => {
             name="first_name"
             placeholder={lang.strings.enter_your_first_name}
             label={lang.strings.first_name}
-            className={inputFieldClasses}
+            className="bg-light bg-opacity-50"
             containerClassName="col-12 col-sm-6"
+            labelClassName="text-dark"
           />
           <CustomFormInput
             required
@@ -37,8 +37,9 @@ const ContactForm: React.FC = () => {
             name="last_name"
             placeholder={lang.strings.enter_your_last_name}
             label={lang.strings.last_name}
-            className={inputFieldClasses}
+            className="bg-light bg-opacity-50"
             containerClassName="col-12 col-sm-6"
+            labelClassName="text-dark"
           />
         </div>
         <CustomFormInput
@@ -47,7 +48,9 @@ const ContactForm: React.FC = () => {
           name="company"
           placeholder={lang.strings.enter_your_company}
           label={lang.strings.company}
-          className={inputFieldClasses}
+          className="bg-light bg-opacity-50"
+          containerClassName="mt-2"
+          labelClassName="text-dark"
         />
         <CustomFormInput
           required
@@ -55,14 +58,18 @@ const ContactForm: React.FC = () => {
           name="email"
           placeholder={lang.strings.enter_your_email_address}
           label={lang.strings.email}
-          className={inputFieldClasses}
+          className="bg-light bg-opacity-50"
+          containerClassName="mt-2"
+          labelClassName="text-dark"
         />
         <CustomTextAreaInput
           required
           name="message"
           placeholder={lang.strings.tell_us_why_you_write}
           label={lang.strings.message}
-          className={inputFieldClasses}
+          className="bg-light bg-opacity-50"
+          containerClassName="mt-2"
+          labelClassName="text-dark"
         />
         <div
           className={`
