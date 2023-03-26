@@ -1,11 +1,16 @@
+import ReactGA from "react-ga4";
 import LangContext from "contexts/LangContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import InfoCard from "components/InfoCard";
 
 const Home: React.FC = () => {
   const lang = useContext(LangContext);
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/", title: "Home" });
+  }, []);
   return (
     <InfoCard className="bg-dark text-light border border-light">
       <h1 className="text-light mb-4 text-center">Automatica</h1>

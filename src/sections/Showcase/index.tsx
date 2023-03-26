@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga4';
 import CustomCard from "components/CustomCard";
 import InfoCard from "components/InfoCard";
 import { ReactComponent as IconBrainChip } from "./icons/chip.svg";
@@ -5,12 +6,17 @@ import { ReactComponent as IconDashboard } from "./icons/dashboard.svg";
 import { ReactComponent as IconCertificate } from "./icons/certificate.svg";
 import { ReactComponent as IconRobot } from "./icons/ai_robot.svg";
 import { ReactComponent as IconLightning } from "./icons/flash.svg";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useEffect } from "react";
 import LangContext from "contexts/LangContext";
 import { Link } from "react-router-dom";
 
 const Showcase: React.FC = () => {
   const lang = useContext(LangContext);
+
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/showcase", title: "Showcase" });
+  }, []);
 
   const iconStyles: CSSProperties = { width: "2.5em", fill: "#ffffff" };
 

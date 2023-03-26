@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import ReactGA from 'react-ga4';
+import { useContext, useEffect } from "react";
 import InfoCard from "components/InfoCard";
 import ContactForm from "./ContactForm";
 import SocialFooter from "./SocialFooter";
@@ -7,6 +8,10 @@ import LangContext from "contexts/LangContext";
 
 const Contact = () => {
   const lang = useContext(LangContext);
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/contact", title: "Contact" });
+  }, []);
 
   return (
     <InfoCard className="bg-dark text-light border border-light">

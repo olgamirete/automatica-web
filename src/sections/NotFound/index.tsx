@@ -1,10 +1,15 @@
+import ReactGA from 'react-ga4';
 import LangContext from "contexts/LangContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import InfoCard from "components/InfoCard";
 
 const NotFound: React.FC = () => {
   const lang = useContext(LangContext);
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/not-found", title: "Not found" });
+  }, []);
   return (
     <InfoCard className="bg-dark text-light border border-light">
       <h1 className="text-light mb-4 text-center">404</h1>

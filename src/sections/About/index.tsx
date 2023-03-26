@@ -1,11 +1,17 @@
+import ReactGA from 'react-ga4';
 import InfoCard from "components/InfoCard";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import LangContext from "contexts/LangContext";
 
 const About: React.FC = () => {
   const lang = useContext(LangContext);
+
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/about", title: "About" });
+  }, []);
 
   return (
     <InfoCard className="bg-dark text-light border border-light">

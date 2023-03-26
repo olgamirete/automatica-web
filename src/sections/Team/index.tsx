@@ -1,14 +1,19 @@
+import ReactGA from 'react-ga4';
 import { Row } from "react-bootstrap";
 import InfoCard from "components/InfoCard";
 import MemberCard from "./MemberCard";
 import picFederico from "./pictures/federico.png";
 import picJulieta from "./pictures/julieta.png";
 import picFrancisco from "./pictures/francisco.png";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import LangContext from "contexts/LangContext";
 
 const Team: React.FC = () => {
   const lang = useContext(LangContext);
+  useEffect(()=>{
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/team", title: "Team" });
+  }, []);
   return (
     <InfoCard className="bg-dark text-light border border-light">
       <h1 className="text-light mb-4 text-center">{lang.strings.our_team}</h1>

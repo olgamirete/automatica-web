@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga4';
 import { availableLanguages } from "contexts/LangContext";
 import en from "lang/en";
 import { useEffect, useState } from "react";
@@ -15,6 +16,14 @@ const useLanguage = (): [
 
   useEffect(() => {
     localStorage.setItem("langCode", langCode);
+    
+    // Send pageview with a custom path
+    ReactGA.event({
+        category: "language",
+        action: "change",
+        label: langCode, // optional
+      });
+    
   }, [langCode]);
 
   useEffect(() => {
