@@ -155,6 +155,8 @@ const DotField: React.FC = () => {
       positions={dotFieldInitialState.positions}
       colors={dotFieldInitialState.colors}
       sizes={dotFieldInitialState.sizes}
+      matrixWorldAutoUpdate={true}
+      getObjectsByProperty={undefined}
     >
       <pointsMaterial
         attach="material"
