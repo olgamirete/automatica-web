@@ -6,9 +6,9 @@ Source files for our site. Feel free to take code/ideas from here for your own p
 
 ## Technologies used:
 
-- TypeScript (because it's marvelous ✨).
-- React (because it just works 🚀).
-- Bootstrap & Sass (because it's easy to use).
-- React Three Fiber (for animating with hardware acceleration).
-- SendGrid (for sending confirmation emails).
-- PHP (minimal backend to connect with SendGrid).
+- TypeScript
+- NextJS
+- Bootstrap & Sass
+- ThreeJS + React Three Fiber
+- SendGrid
+

@@ -1,0 +1,37 @@
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": map-merge(
+      map-get($utilities, "background-color"),
+      (
+        state: hover,
+      ),
+    ),
+    "bg-opacity": map-merge(
+      map-get($utilities, "bg-opacity"),
+      (
+        state: hover,
+      ),
+    ),
+    "fill": (
+        property: fill,
+        local-vars: (
+          "bg-opacity": 1
+        ),
+        values: map-merge(
+          $utilities-bg-colors,
+          (
+            "transparent": transparent,
+            "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
+            "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          )
+        )
+      ),
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
