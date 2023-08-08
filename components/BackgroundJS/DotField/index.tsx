@@ -116,9 +116,9 @@ const DotField: React.FC = () => {
       if (points.geometry) {
         points.geometry.attributes.position.needsUpdate = true;
         points.geometry.attributes.color.needsUpdate = true;
-        let dots = points.geometry.attributes.position.array as number[];
+        let dots = points.geometry.attributes.position.array;
         const dotCount = dots.length / 3;
-        let colors = points.geometry.attributes.color.array as number[];
+        let colors = points.geometry.attributes.color.array;
 
         for (let i = 0; i < dotCount; i++) {
           const x = dots[i * 3 + 0];
