@@ -1,12 +1,11 @@
 import "./bootstrap.scss";
 import "./index.css";
 import type { Metadata, ResolvingMetadata } from "next";
-import { defaultLocale } from "@/i18n/config";
 import AppContainer from "@/components/AppContainer";
 import { ReactNode } from "react";
 import { headers } from "next/headers";
 import { DictionaryObject } from "@/i18n/types/Dictionary";
-import { Locale } from "@/i18n/types/Locale";
+import parseLocale from "@/i18n/parseLocale";
 
 export const metadataDictionary: DictionaryObject<Metadata> = {
     en: {
@@ -27,24 +26,24 @@ export async function generateMetadata(
     props: any,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const lang = (headers().get("x-locale") ?? defaultLocale) as Locale;
+    const lang = parseLocale(headers().get("x-locale") ?? "");
 
     return {
         title: "Automatica",
         icons: {
             apple: "images/logo192.png",
             other: {
-                url: '/favicon.png',
-                rel: 'icon',
-                type: 'image/png'
-            }
+                url: "/favicon.png",
+                rel: "icon",
+                type: "image/png",
+            },
         },
         ...metadataDictionary[lang],
     };
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-    const lang = headers().get("x-locale") ?? defaultLocale;
+    const lang = parseLocale(headers().get("x-locale") ?? "");
     return (
         <html lang={lang}>
             <body>
