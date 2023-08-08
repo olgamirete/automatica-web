@@ -63,6 +63,7 @@ const useContactForm = (lang: Locale) => {
             setMessageStatus,
             langMetadata._locale,
             localeDict.please_complete_captcha,
+            lang,
         ]
     );
 
