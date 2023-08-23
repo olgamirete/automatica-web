@@ -1,6 +1,7 @@
 import "./bootstrap.scss";
 import "./index.css";
 import type { Metadata, ResolvingMetadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import AppContainer from "@/components/AppContainer";
 import { ReactNode } from "react";
 import { headers } from "next/headers";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <html lang={lang}>
             <body>
                 <AppContainer lang={lang}>{children}</AppContainer>
+                <Analytics />
             </body>
         </html>
     );
