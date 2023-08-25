@@ -29,40 +29,37 @@ const useContactForm = (lang: Locale) => {
             // Get form data
             const form = e.currentTarget;
             const formData = new FormData(form);
+            const captcha = formData.get("g-recaptcha-response")?.toString();
 
-            // if (formData.get("g-recaptcha-response")) {
-            formData.set("locale", lang);
+            if (captcha) {
+                formData.set("locale", lang);
 
-            // Send data using the fetch api
-            fetch("/api/contact-message", {
-                method: "POST",
-                body: formData,
-            })
-                .then(async (response) => {
-                    if (response.status === 200) {
-                        form.reset();
-                        setMessageStatus("sent");
-                        return response.text();
-                    } else {
-                        setMessageStatus("error");
-                    }
+                // Send data using the fetch api
+                fetch("/api/contact-message", {
+                    method: "POST",
+                    body: formData,
                 })
-                .catch((error) => {
-                    console.error(error);
-                    setMessageStatus("error");
-                });
-            // } else {
-            //     alert(localeDict.please_complete_captcha);
-            //     setMessageStatus("null");
-            // }
+                    .then(async (response) => {
+                        if (response.status === 200) {
+                            form.reset();
+                            setMessageStatus("sent");
+                        } else {
+                            throw new Error(await response.text());
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        setMessageStatus("error");
+                    });
+            } else {
+                alert(localeDict.please_complete_captcha);
+                setMessageStatus("null");
+            }
 
             // Prevent html form submit
             return false;
         },
-        [
-            setMessageStatus,
-            lang,
-        ]
+        [setMessageStatus, lang, localeDict]
     );
 
     return {

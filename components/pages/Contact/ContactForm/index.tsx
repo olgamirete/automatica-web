@@ -6,6 +6,7 @@ import useContactForm from "./useContactForm";
 import AlertMessage from "../AlertMessage";
 import FCi18n from "@/i18n/types/FCi18n";
 import dictionary from "./dictionary";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm: FCi18n<{}> = ({ lang }) => {
     const {
@@ -16,6 +17,7 @@ const ContactForm: FCi18n<{}> = ({ lang }) => {
         setLoadingCaptcha,
     } = useContactForm(lang);
     const localeDict = dictionary[lang];
+    const reCaptchaSiteKey = process.env.NEXT_PUBLIC_GOOGLE_API_RECAPTCHA_V2_SITE_KEY as string;
 
     return (
         <>
@@ -65,10 +67,10 @@ const ContactForm: FCi18n<{}> = ({ lang }) => {
                         ${loadingCaptcha ? "d-none" : ""}
                     `}
                 >
-                    {/* <ReCaptcha
-                        sitekey="6Le_JzEjAAAAAG_cagoUIoQW6hxKnAfe4sS7g9Th"
+                    <ReCAPTCHA
+                        sitekey={reCaptchaSiteKey}
                         asyncScriptOnLoad={() => setLoadingCaptcha(false)}
-                    /> */}
+                    />
                 </div>
                 <CustomSubmitButton
                     lang={lang}
